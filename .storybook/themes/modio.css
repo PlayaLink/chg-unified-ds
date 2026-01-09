@@ -1,0 +1,38 @@
+/* Modio Brand Theme */
+[data-theme="modio"] {
+  --color-brand-25: #f1fbfd;
+  --color-brand-50: #e5f7fc;
+  --color-brand-100: #c8ecf8;
+  --color-brand-200: #a6dff1;
+  --color-brand-300: #84d3eb;
+  --color-brand-400: #5ec3e0;
+  --color-brand-500: #3ba9d2;
+  --color-brand-600: #2c91b6;
+  --color-brand-700: #1e799b;
+  --color-brand-800: #065d86;
+  --color-brand-900: #04425f;
+
+  --color-primary-25: #f1fbfd;
+  --color-primary-50: #e5f7fc;
+  --color-primary-100: #c8ecf8;
+  --color-primary-200: #a6dff1;
+  --color-primary-300: #84d3eb;
+  --color-primary-400: #5ec3e0;
+  --color-primary-500: #3ba9d2;
+  --color-primary-600: #2c91b6;
+  --color-primary-700: #1e799b;
+  --color-primary-800: #065d86;
+  --color-primary-900: #04425f;
+
+  --color-secondary-25: #f3fbf9;
+  --color-secondary-50: #ecf9f6;
+  --color-secondary-100: #d8f3ec;
+  --color-secondary-200: #b1e7d9;
+  --color-secondary-300: #8bdac6;
+  --color-secondary-400: #64ceb4;
+  --color-secondary-500: #3aba9b;
+  --color-secondary-600: #319b81;
+  --color-secondary-700: #277c67;
+  --color-secondary-800: #1d5d4d;
+  --color-secondary-900: #16463a;
+}

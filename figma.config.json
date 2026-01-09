@@ -1,0 +1,13 @@
+{
+  "codeConnect": {
+    "include": [
+      "src/components/**/*.figma.tsx"
+    ],
+    "exclude": [
+      "src/components/**/*.stories.tsx"
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}

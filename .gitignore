@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+storybook-static/
+dist/
+
+# Environment
+.env
+.env.local
+
+# IDE
+.DS_Store
+.vscode/
+.idea/
+
+# Temp
+*.log

@@ -1,0 +1,38 @@
+/* Connect Brand Theme */
+[data-theme="connect"] {
+  --color-brand-25: #fafdff;
+  --color-brand-50: #effaff;
+  --color-brand-100: #def4ff;
+  --color-brand-200: #b6ebff;
+  --color-brand-300: #75ddff;
+  --color-brand-400: #2ccdff;
+  --color-brand-500: #00a8e2;
+  --color-brand-600: #0093d4;
+  --color-brand-700: #0075ab;
+  --color-brand-800: #00638d;
+  --color-brand-900: #065274;
+
+  --color-primary-25: #fafdff;
+  --color-primary-50: #effaff;
+  --color-primary-100: #def4ff;
+  --color-primary-200: #b6ebff;
+  --color-primary-300: #75ddff;
+  --color-primary-400: #2ccdff;
+  --color-primary-500: #00a8e2;
+  --color-primary-600: #0093d4;
+  --color-primary-700: #0075ab;
+  --color-primary-800: #00638d;
+  --color-primary-900: #065274;
+
+  --color-secondary-25: #fff9f5;
+  --color-secondary-50: #fef4ed;
+  --color-secondary-100: #fde6d5;
+  --color-secondary-200: #fbcda9;
+  --color-secondary-300: #f8ad74;
+  --color-secondary-400: #f68c3b;
+  --color-secondary-500: #f47615;
+  --color-secondary-600: #f5822a;
+  --color-secondary-700: #c55b09;
+  --color-secondary-800: #a44c08;
+  --color-secondary-900: #883e06;
+}

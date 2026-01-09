@@ -1,0 +1,38 @@
+/* CompHealth Brand Theme */
+[data-theme="comphealth"] {
+  --color-brand-25: #f0ecf3;
+  --color-brand-50: #eae4ee;
+  --color-brand-100: #ccc4d7;
+  --color-brand-200: #aea3bc;
+  --color-brand-300: #8f7fa1;
+  --color-brand-400: #79658d;
+  --color-brand-500: #644d7b;
+  --color-brand-600: #5e4775;
+  --color-brand-700: #553f6c;
+  --color-brand-800: #4b3a62;
+  --color-brand-900: #3c304c;
+
+  --color-primary-25: #f0ecf3;
+  --color-primary-50: #eae4ee;
+  --color-primary-100: #ccc4d7;
+  --color-primary-200: #aea3bc;
+  --color-primary-300: #8f7fa1;
+  --color-primary-400: #79658d;
+  --color-primary-500: #644d7b;
+  --color-primary-600: #5e4775;
+  --color-primary-700: #553f6c;
+  --color-primary-800: #4b3a62;
+  --color-primary-900: #3c304c;
+
+  --color-secondary-25: #fffbfa;
+  --color-secondary-50: #fef3f2;
+  --color-secondary-100: #fde5e3;
+  --color-secondary-200: #fcd0cc;
+  --color-secondary-300: #f9afa8;
+  --color-secondary-400: #f48075;
+  --color-secondary-500: #ea5c4f;
+  --color-secondary-600: #d63a2c;
+  --color-secondary-700: #b42d21;
+  --color-secondary-800: #95291f;
+  --color-secondary-900: #7c2820;
+}
