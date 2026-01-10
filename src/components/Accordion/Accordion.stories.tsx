@@ -45,7 +45,7 @@ type Story = StoryObj<typeof AccordionItem>
 
 export const Overview: Story = {
   render: () => (
-    <div className="flex gap-48">
+    <div className="flex gap-48 px-48 pb-48 pt-32">
       {/* Default State */}
       <div className="flex w-[320px] flex-col gap-8">
         <span className="text-sm font-medium text-gray-500">Default (All Collapsed)</span>

@@ -55,7 +55,7 @@ type Story = StoryObj<typeof Avatar>
 
 export const Overview: Story = {
   render: () => (
-    <div className="flex flex-col gap-48">
+    <div className="flex flex-col gap-48 px-48 pb-48 pt-32">
       {/* Sizes */}
       <div className="flex flex-col gap-12">
         <span className="text-sm font-medium text-gray-500">Sizes</span>

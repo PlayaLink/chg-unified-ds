@@ -69,7 +69,7 @@ type Story = StoryObj<typeof Slider>
 
 export const Overview: Story = {
   render: () => (
-    <div className="flex w-[320px] flex-col gap-32">
+    <div className="flex w-[320px] flex-col gap-32 px-48 pb-48 pt-32">
       {/* No Labels */}
       <div className="flex flex-col gap-8">
         <span className="text-sm font-medium text-gray-500">No Labels</span>

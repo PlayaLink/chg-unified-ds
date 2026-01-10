@@ -100,7 +100,7 @@ type Story = StoryObj<typeof Button>
 
 export const Overview: Story = {
   render: () => (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 px-48 pb-48 pt-32">
       {/* Appearance */}
       <div className="flex flex-col gap-2">
         <span className="text-sm font-medium text-gray-500">Appearance</span>

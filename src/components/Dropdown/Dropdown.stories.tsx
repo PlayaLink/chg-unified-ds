@@ -69,7 +69,7 @@ type Story = StoryObj<typeof Dropdown>
 
 export const Overview: Story = {
   render: () => (
-    <div className="flex w-[320px] flex-col gap-24">
+    <div className="flex w-[320px] flex-col gap-24 px-48 pb-48 pt-32">
       {/* Size */}
       <div className="flex flex-col gap-2">
         <span className="text-sm font-medium text-gray-500">Size</span>
