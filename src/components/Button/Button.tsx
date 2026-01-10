@@ -1,6 +1,6 @@
 /**
  * Button component
- * @figma https://www.figma.com/design/LkIyThUA0oVNsDEAyOF7ER/Design-System--Components?node-id=19-360
+ * @figma https://www.figma.com/design/r7KRvL85GNIIMn4iM9gKvo/Design-System--Components--Copy-?node-id=19-360
  */
 'use client'
 

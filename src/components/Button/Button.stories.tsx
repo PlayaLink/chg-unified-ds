@@ -169,7 +169,7 @@ export const Figma: Story = {
   parameters: {
     docs: {
       description: {
-        story: '[View in Figma](https://www.figma.com/design/LkIyThUA0oVNsDEAyOF7ER/Design-System--Components?node-id=19-360)',
+        story: '[View in Figma](https://www.figma.com/design/r7KRvL85GNIIMn4iM9gKvo/Design-System--Components--Copy-?node-id=19-360)',
       },
     },
   },

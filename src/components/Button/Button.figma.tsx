@@ -3,9 +3,9 @@ import { Button } from './Button'
 
 /**
  * Figma Code Connect for Button component
- * @see https://www.figma.com/design/LkIyThUA0oVNsDEAyOF7ER/Design-System--Components?node-id=19-360
+ * @see https://www.figma.com/design/r7KRvL85GNIIMn4iM9gKvo/Design-System--Components--Copy-?node-id=19-360
  */
-figma.connect(Button, 'https://www.figma.com/design/LkIyThUA0oVNsDEAyOF7ER/Design-System--Components?node-id=19:360', {
+figma.connect(Button, 'https://www.figma.com/design/r7KRvL85GNIIMn4iM9gKvo/Design-System--Components--Copy-?node-id=19:360', {
   props: {
     variant: figma.enum('Appearance', {
       'Primary': 'primary',
