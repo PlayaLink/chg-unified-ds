@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Button } from '../Button'
+import { Slot } from '../Slot'
 import { Field } from './Field'
 
 const meta: Meta<typeof Field> = {
@@ -66,12 +67,6 @@ const meta: Meta<typeof Field> = {
 export default meta
 type Story = StoryObj<typeof Field>
 
-// Mock input slot component for demo purposes
-const MockInput = () => (
-  <div className="flex h-40 w-full items-center rounded-4 border border-dashed border-orange-400 bg-base-white px-12">
-    <span className="text-sm text-gray-500">Input placeholder</span>
-  </div>
-)
 
 // =============================================================================
 // OVERVIEW (default - all variants by property)
@@ -87,13 +82,13 @@ export const Overview: Story = {
           <div className="flex flex-col gap-8">
             <span className="text-xs text-gray-400">Vertical</span>
             <Field label="Label" className="w-320">
-              <MockInput />
+              <Slot className="w-full">Input</Slot>
             </Field>
           </div>
           <div className="flex flex-col gap-8">
             <span className="text-xs text-gray-400">Horizontal</span>
             <Field label="Label" orientation="horizontal" className="w-424">
-              <MockInput />
+              <Slot className="w-full">Input</Slot>
             </Field>
           </div>
         </div>
@@ -106,13 +101,13 @@ export const Overview: Story = {
           <div className="flex flex-col gap-8">
             <span className="text-xs text-gray-400">Not Required</span>
             <Field label="Label" className="w-320">
-              <MockInput />
+              <Slot className="w-full">Input</Slot>
             </Field>
           </div>
           <div className="flex flex-col gap-8">
             <span className="text-xs text-gray-400">Required</span>
             <Field label="Label" isRequired className="w-320">
-              <MockInput />
+              <Slot className="w-full">Input</Slot>
             </Field>
           </div>
         </div>
@@ -125,13 +120,13 @@ export const Overview: Story = {
           <div className="flex flex-col gap-8">
             <span className="text-xs text-gray-400">Without Helper</span>
             <Field label="Label" className="w-320">
-              <MockInput />
+              <Slot className="w-full">Input</Slot>
             </Field>
           </div>
           <div className="flex flex-col gap-8">
             <span className="text-xs text-gray-400">With Helper</span>
             <Field label="Label" helperText="Helper Message" className="w-320">
-              <MockInput />
+              <Slot className="w-full">Input</Slot>
             </Field>
           </div>
         </div>
@@ -144,13 +139,13 @@ export const Overview: Story = {
           <div className="flex flex-col gap-8">
             <span className="text-xs text-gray-400">Without Counter</span>
             <Field label="Label" className="w-320">
-              <MockInput />
+              <Slot className="w-full">Input</Slot>
             </Field>
           </div>
           <div className="flex flex-col gap-8">
             <span className="text-xs text-gray-400">With Counter</span>
             <Field label="Label" showCounter currentCount={25} maxCount={100} className="w-320">
-              <MockInput />
+              <Slot className="w-full">Input</Slot>
             </Field>
           </div>
         </div>
@@ -163,13 +158,13 @@ export const Overview: Story = {
           <div className="flex flex-col gap-8">
             <span className="text-xs text-gray-400">With Info Text</span>
             <Field label="Label" orientation="horizontal" infoText="Info" className="w-424">
-              <MockInput />
+              <Slot className="w-full">Input</Slot>
             </Field>
           </div>
           <div className="flex flex-col gap-8">
             <span className="text-xs text-gray-400">With Info Icon</span>
             <Field label="Label" orientation="horizontal" infoText="Info" showInfoIcon className="w-424">
-              <MockInput />
+              <Slot className="w-full">Input</Slot>
             </Field>
           </div>
         </div>
@@ -190,7 +185,7 @@ export const Overview: Story = {
               maxCount={100}
               className="w-320"
             >
-              <MockInput />
+              <Slot className="w-full">Input</Slot>
             </Field>
           </div>
           <div className="flex flex-col gap-8">
@@ -207,7 +202,7 @@ export const Overview: Story = {
               maxCount={100}
               className="w-424"
             >
-              <MockInput />
+              <Slot className="w-full">Input</Slot>
             </Field>
           </div>
         </div>
@@ -233,7 +228,7 @@ export const Props: Story = {
   },
   render: (args) => (
     <Field {...args} className="w-320">
-      <MockInput />
+      <Slot className="w-full">Input</Slot>
     </Field>
   ),
 }

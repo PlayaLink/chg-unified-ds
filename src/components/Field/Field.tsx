@@ -31,7 +31,7 @@ export const styles = sortCx({
       foot: 'justify-between',
     },
     horizontal: {
-      root: 'flex-row',
+      root: 'flex-row gap-8',
       head: 'flex-row items-stretch justify-stretch w-140 py-10',
       labelWrapper: '',
       body: 'flex-1 gap-4 items-end justify-center',
