@@ -4,7 +4,7 @@
  * Generate Tailwind Configs from Figma Tokens
  *
  * Creates:
- * 1. Base tailwind.config.js with shared utilities (spacing, typography, etc.)
+ * 1. Base tailwind.config.cjs with shared utilities (spacing, typography, etc.)
  * 2. Brand-specific configs (tailwind.config.weatherby.js, etc.)
  *
  * Usage: node scripts/generate-tailwind-configs.cjs
@@ -313,7 +313,7 @@ function generateBrandConfig(brandName) {
   }
 
   const config = `/** @type {import('tailwindcss').Config} */
-const baseConfig = require('./tailwind.config.js');
+const baseConfig = require('./tailwind.config.cjs');
 
 module.exports = {
   ...baseConfig,
@@ -342,8 +342,8 @@ function main() {
   // Generate base config
   console.log('Creating base config (shared utilities)...');
   const baseConfig = generateBaseConfig();
-  fs.writeFileSync(path.join(ROOT_DIR, 'tailwind.config.js'), baseConfig);
-  console.log('  ✓ tailwind.config.js');
+  fs.writeFileSync(path.join(ROOT_DIR, 'tailwind.config.cjs'), baseConfig);
+  console.log('  ✓ tailwind.config.cjs');
 
   // Generate brand-specific configs
   console.log('\nCreating brand-specific configs...');

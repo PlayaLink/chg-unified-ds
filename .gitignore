@@ -20,3 +20,4 @@ dist/
 
 # Temp
 *.log
+.vercel

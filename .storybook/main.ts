@@ -20,7 +20,7 @@ const config: StorybookConfig = {
     const { default: tailwindcss } = await import('@tailwindcss/vite')
 
     // Use Storybook config with CSS variables for runtime theme switching
-    const tailwindConfigPath = resolve(__dirname, '../tailwind.config.storybook.js')
+    const tailwindConfigPath = resolve(__dirname, '../tailwind.config.storybook.cjs')
 
     console.log('\n🎨 Loading Tailwind config: Storybook (runtime theme switching enabled)\n')
 
