@@ -1,0 +1,24 @@
+---
+alwaysApply: true
+---
+
+# Known Issues
+
+## Tailwind CSS 4 + Storybook HMR
+
+**New components require a Storybook restart.** Tailwind CSS 4's HMR doesn't always detect utility classes in newly created component files. If a new component appears unstyled (no colors, looks like wireframes), restart Storybook:
+
+```bash
+pkill -f "storybook dev"
+npm run dev
+```
+
+This only affects new files - edits to existing components work fine with HMR.
+
+## Token Issues
+
+Token issues are tracked in `tokens/TOKEN-ISSUES.md`. Current known issues:
+- Self-referencing radius aliases (workaround in place)
+- Empty brand-specific token files (brand colors available in Primitives file)
+
+Run `npm run validate:tokens` after updating tokens to check for issues.

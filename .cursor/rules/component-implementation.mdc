@@ -28,16 +28,74 @@ Every component file must have a doc comment at the top with link to Figma sourc
  */
 ```
 
-## 4. Build with React Aria
-Use React Aria Components for accessibility:
-```typescript
+## 4. Universal Component Pattern
+
+ALL components use the style object pattern with `sortCx`:
+
+```tsx
+/**
+ * ComponentName component
+ * @figma https://www.figma.com/design/<file-id>?node-id=<node-id>
+ */
+'use client'
+
+import type { FC, ReactNode } from 'react'
+import { isValidElement } from 'react'
+import type { ButtonProps as AriaButtonProps } from 'react-aria-components'
 import { Button as AriaButton } from 'react-aria-components'
+import { cx, sortCx } from '@/utils/cx'
+import { isReactComponent } from '@/utils/is-react-component'
+
+export const styles = sortCx({
+  common: {
+    root: [
+      'base-classes-here',
+      'focus-visible:ring-4 focus-visible:ring-brand-100',
+      'disabled:cursor-not-allowed',
+    ].join(' '),
+    icon: 'pointer-events-none shrink-0',
+  },
+  sizes: {
+    xs: { root: 'gap-4 rounded-6 px-8 py-4 text-xs', icon: 'size-[14px]' },
+    sm: { root: 'gap-6 rounded-8 px-12 py-8 text-sm', icon: 'size-[16px]' },
+    md: { root: 'gap-8 rounded-8 px-14 py-10 text-sm', icon: 'size-[18px]' },
+    lg: { root: 'gap-8 rounded-8 px-18 py-12 text-md', icon: 'size-[20px]' },
+  },
+  variants: {
+    primary: {
+      root: [
+        'bg-brand-600 text-base-white shadow-sm',
+        'hover:bg-brand-700',
+        'disabled:bg-gray-100 disabled:text-gray-400',
+      ].join(' '),
+    },
+    soft: {
+      root: [
+        'bg-brand-100 text-brand-700',
+        'hover:bg-brand-200',
+        'disabled:bg-gray-100 disabled:text-gray-400',
+      ].join(' '),
+    },
+  },
+})
+
+export type ComponentSize = keyof typeof styles.sizes
+export type ComponentVariant = keyof typeof styles.variants
 ```
 
-## 5. Update Imports
-Ensure imports use our project paths:
-- `@/utils/cx` for class merging
-- `@/utils/is-react-component` for component type checking
+## 5. Icon Props Pattern
+
+Support both FC components and ReactNode elements:
+
+```tsx
+interface Props {
+  iconLeading?: FC<{ className?: string }> | ReactNode
+}
+
+// In render:
+{isValidElement(IconLeading) && IconLeading}
+{isReactComponent(IconLeading) && <IconLeading className={iconClassName} />}
+```
 
 ## 6. Validate Tokens (Figma ↔ Code Sync)
 After implementing, check Storybook for visual issues. If styles look wrong:
@@ -47,41 +105,18 @@ After implementing, check Storybook for visual issues. If styles look wrong:
 3. **Log the issue** - Add to `tokens/TOKEN-ISSUES.md` for designer review
 
 ## 7. Create Storybook Stories
-Create `<component>.stories.tsx` with:
-- Stories for each variant
-- Stories for each size (if applicable)
-- Stories for each state (default, disabled, loading, etc.)
-- **REQUIRED**: Final story named `Figma` with link back to source
+Create `<component>.stories.tsx` with three required stories:
+- `Overview` - Shows all variants grouped by property
+- `Props` - Single component with controls (add `tags: ['show-panel']`)
+- `SourceCodeAndDesign` - Links to GitHub and Figma
 
 ## 8. Export from Index
 Update `index.ts` to export the component and its types.
 
 ## 9. Set Up Figma Code Connect
-Create `<name>.figma.tsx` to link the component to Figma Dev Mode:
+Create `<name>.figma.tsx` - see `figma-code-connect.mdc` for template.
 
-```typescript
-import figma from '@figma/code-connect'
-import { ComponentName } from './component-name'
-
-// Use the component SET node-id (not a variant), with colon format (18:30003)
-figma.connect(ComponentName, 'https://www.figma.com/design/<file-id>?node-id=<node-id>', {
-  props: {
-    // Map Figma property names exactly as they appear in Figma
-    children: figma.string('Label'),
-    size: figma.enum('Size', { sm: 'sm', md: 'md', lg: 'lg', xl: 'xl', '2xl': '2xl' }),
-    color: figma.enum('Hierarchy', { Primary: 'primary', Secondary: 'secondary' }),
-    isDisabled: figma.enum('State', { Disabled: true }),
-    isLoading: figma.enum('State', { Loading: true }),
-  },
-  example: (props) => <ComponentName {...props} />,
-})
-```
-
-Then publish to Figma:
+Then publish:
 ```bash
 FIGMA_ACCESS_TOKEN="<token>" npm run figma:publish
 ```
-
-**Finding the token:** The Figma access token is in `.mcp.json` under `mcpServers.figma-work.args` (the `--figma-api-key` value).
-
-This enables designers to see real code snippets in Figma Dev Mode.
