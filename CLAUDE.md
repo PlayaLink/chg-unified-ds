@@ -91,6 +91,72 @@ Every component file must have a doc comment linking to Figma source:
  */
 ```
 
+## Component Development Workflow
+
+**IMPORTANT: This is a Figma-first design system. Every component MUST have a Figma source.**
+
+### Adding a New Component
+
+1. **Get Figma URL** - Obtain the Figma frame/component URL from the design system file
+   - Format: `https://www.figma.com/design/<file-id>?node-id=<node-id>`
+
+2. **Fetch Figma Data** - Use the Figma MCP to inspect the component:
+   - Extract variants, properties, and states
+   - Note spacing, colors, typography tokens used
+   - Identify which React Aria component to use
+
+3. **Create Component Files** - Follow the structure above
+
+4. **Map Figma to React** - See property mapping below
+
+5. **Create Storybook Stories** - One story per variant, final story links to Figma
+
+6. **Publish Code Connect** - Run `npm run figma:publish`
+
+### Figma Property Types → React Mapping
+
+| Figma Property | React Equivalent | Style Object | Example |
+|----------------|------------------|--------------|---------|
+| **Variant** | Union type prop | Key in `styles` object | `variant?: 'primary' \| 'soft'` |
+| **Text** | `string` or `ReactNode` | N/A (content) | `children`, `label?: string` |
+| **Boolean** | `boolean` prop (`is*`, `has*`) | Conditional in `cx()` | `isDisabled?: boolean` |
+| **Instance swap** | `ReactNode` or `FC` prop | N/A (slot) | `iconLeading?: FC \| ReactNode` |
+
+### Universal Component Pattern
+
+ALL components use the style object pattern with `sortCx`. Only include keys that apply:
+
+```tsx
+// Full example (component with variants + sizes)
+export const styles = sortCx({
+  common: {
+    root: [
+      'base-styles-here',
+      'more-styles',
+    ].join(' '),
+    icon: 'pointer-events-none size-5 shrink-0',
+  },
+  sizes: {
+    sm: { root: 'px-3 py-2 text-sm' },
+    md: { root: 'px-4 py-2.5 text-sm' },
+  },
+  variants: {
+    primary: { root: 'bg-brand-600 text-white hover:bg-brand-700' },
+    secondary: { root: 'bg-white text-gray-700 ring-1 ring-gray-300' },
+  },
+})
+
+// Derived types (only when applicable)
+export type ComponentSize = keyof typeof styles.sizes
+export type ComponentVariant = keyof typeof styles.variants
+```
+
+**Why this pattern:**
+- Consistent across all components (simple or complex)
+- Mirrors Figma structure (variants, sizes as separate concerns)
+- Types derived automatically from style object
+- Flexible - only include keys that apply to the component
+
 ### Path Alias
 
 Use `@/` to import from `src/`:
