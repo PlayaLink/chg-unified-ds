@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta = {
   title: 'Foundations/Colors',
-  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
   },
@@ -61,7 +60,7 @@ const ColorScale = ({
 
 export const Overview: Story = {
   render: () => (
-    <div>
+    <div style={{ padding: '40px 48px 48px' }}>
       {/* Header */}
       <div style={{ marginBottom: '48px' }}>
         <h1 style={{ fontSize: '48px', fontWeight: 500, color: '#181d27', marginBottom: '12px' }}>

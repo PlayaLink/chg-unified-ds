@@ -82,7 +82,7 @@ const weights = [
 // Story 1: Typography Overview
 export const Overview: Story = {
   render: () => (
-    <div>
+    <div style={{ padding: '40px 48px 48px' }}>
       {/* Header */}
       <div style={{ marginBottom: '48px' }}>
         <h1 style={{ fontSize: '48px', fontWeight: 500, color: '#181d27', marginBottom: '12px' }}>
@@ -155,7 +155,7 @@ export const Overview: Story = {
 // Story 2: Display Fonts
 export const DisplayFonts: Story = {
   render: () => (
-    <div>
+    <div style={{ padding: '40px 48px 48px' }}>
       {/* Header */}
       <div style={{ marginBottom: '48px' }}>
         <h1 style={{ fontSize: '48px', fontWeight: 500, color: '#181d27', marginBottom: '12px' }}>
@@ -182,7 +182,7 @@ export const DisplayFonts: Story = {
 // Story 3: Foundational Typography
 export const FoundationalTypography: Story = {
   render: () => (
-    <div>
+    <div style={{ padding: '40px 48px 48px' }}>
       {/* Header */}
       <div style={{ marginBottom: '48px' }}>
         <h1 style={{ fontSize: '48px', fontWeight: 500, color: '#181d27', marginBottom: '12px' }}>
@@ -222,7 +222,7 @@ export const FoundationalTypography: Story = {
 // Story 4: Type Showcase
 export const TypeShowcase: Story = {
   render: () => (
-    <div>
+    <div style={{ padding: '40px 48px 48px' }}>
       {/* Header */}
       <div style={{ marginBottom: '48px' }}>
         <h1 style={{ fontSize: '48px', fontWeight: 500, color: '#181d27', marginBottom: '12px' }}>
