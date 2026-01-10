@@ -23,7 +23,7 @@ export const styles = sortCx({
     appearances: {
       underline: 'gap-0 border-b border-gray-300',
       block: 'gap-0 border-b border-gray-300 pb-8',
-      'block-inverted': 'gap-4 rounded-8 bg-gray-800 p-4',
+      'block-inverted': 'gap-4 rounded-8 bg-brand-600 p-4',
     },
   },
   tab: {
@@ -41,8 +41,8 @@ export const styles = sortCx({
         selected: 'rounded-6 bg-brand-600 text-base-white shadow-sm',
       },
       'block-inverted': {
-        default: 'rounded-6 text-gray-300 hover:text-base-white',
-        selected: 'rounded-6 bg-base-white text-gray-900',
+        default: 'rounded-6 text-base-white/70 hover:text-base-white',
+        selected: 'rounded-6 bg-base-white text-brand-600',
       },
     },
     fill: 'flex-1 text-center',
