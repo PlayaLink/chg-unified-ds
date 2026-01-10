@@ -27,6 +27,15 @@ const preview: Preview = {
         date: /Date$/,
       },
     },
+    options: {
+      storySort: {
+        order: [
+          'Foundations',
+          ['Colors', 'Typography', 'Shadows', 'Spacing', 'Radius'],
+          'Components',
+        ],
+      },
+    },
   },
   globalTypes: {
     theme: {
