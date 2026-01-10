@@ -1,82 +1,109 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code when working with the CHG Unified Design System.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
 
-CHG Unified Design System is a multi-source design system with components built from React Aria and Tailwind CSS 4. Components maintain 1:1 parity with multiple Figma design files.
+CHG Unified Design System is a multi-brand design system built with React, React Aria Components, and Tailwind CSS 4. It supports 6 CHG brands from a single Figma source file:
 
-## Figma Sources
-
-This project references multiple Figma files. Components are organized by source:
-
-```
-src/components/
-  source-a/          # Components from Figma file A
-  source-b/          # Components from Figma file B
-  shared/            # Shared/common components
-```
+- **Weatherby** (default)
+- **CompHealth**
+- **Modio**
+- **Connect**
+- **LocumSmart**
+- **Wireframe**
 
 ## Commands
 
 ```bash
 npm run dev              # Start Storybook on port 6006
 npm run build            # Build Storybook
-npm run build:tokens     # Regenerate CSS from Figma tokens
-npm run figma:publish    # Publish Figma Code Connect
+npm run build:tokens     # Generate CSS from Figma token JSON files
+npm run build:tailwind   # Generate brand-specific Tailwind configs from tokens
+npm run validate:tokens  # Check token files for issues (aliases, nulls, etc.)
+npm run figma:publish    # Publish Figma Code Connect (requires FIGMA_ACCESS_TOKEN in .env)
 ```
-
-**Note:** `figma:publish` requires `FIGMA_ACCESS_TOKEN` in .env file.
 
 ## Architecture
 
+### Dual Theming Approach
+
+The system uses different strategies for Storybook vs production:
+
+**Storybook (runtime switching):**
+- Uses `tailwind.config.storybook.js` with CSS variables (`var(--color-brand-*)`)
+- Brand themes defined in `.storybook/themes/*.css` set variable values
+- Theme applied via `data-theme` attribute on DOM elements
+- Switching happens via Storybook toolbar dropdown
+
+**Production (build-time):**
+- Uses brand-specific configs: `tailwind.config.weatherby.js`, etc.
+- Colors are hardcoded values, not CSS variables
+- Smaller bundle, no runtime overhead
+- Build with: `BRAND=weatherby npm run build:lib` (when implemented)
+
 ### Design Token Flow
+
 ```
-Figma Variables → Export Plugin → tokens/*.tokens.json → build-tokens.js → src/styles/tokens.css
-                                                                          → tailwind.config.js (manual updates)
+Figma Variables → Export Plugin → tokens/*.tokens.json → build-tokens.cjs → src/styles/tokens.css
+                                                       → generate-tailwind-configs.cjs → tailwind.config.*.js
 ```
+
+Token files in `tokens/`:
+- `Core.default.tokens.json` - Spacing, radius, animation
+- `Primitives.Default.tokens.json` - Color primitives (all 6 brands)
+- `Design System.Light.tokens.json` - Semantic tokens (light mode)
+- `Design System.Dark.tokens.json` - Semantic tokens (dark mode)
 
 When tokens change in Figma:
 1. Export via Plugins → Development → Variables Export
-2. Save JSON to `tokens/[source-name].tokens.json`
-3. Run `npm run build:tokens` to regenerate CSS variables
-4. Update `tailwind.config.js` if semantic token changes are needed
+2. Save JSON to `tokens/`
+3. Run `npm run validate:tokens` to check for issues
+4. Run `npm run build:tokens` and `npm run build:tailwind`
+5. Log any new issues in `tokens/TOKEN-ISSUES.md`
+
+### Storybook Theme Switching
+
+Brand switching is implemented in `.storybook/preview.tsx`:
+- Global type `theme` provides toolbar dropdown
+- Decorator applies `data-theme` attribute to story wrapper
+- CSS in `.storybook/themes/[brand].css` defines brand color variables
 
 ### Component Structure
 
-Components are organized by Figma source. Each component lives in `src/components/<source>/<name>/` with:
-- `<name>.tsx` - React Aria component with doc header
-- `<name>.stories.tsx` - Storybook stories (final story must be "Figma")
-- `<name>.figma.tsx` - Figma Code Connect file
-- `index.ts` - Barrel exports
+Components use React Aria for accessibility and Tailwind for styling:
 
-Use `cx()` from `@/utils/cx` for className merging. Use `sortCx()` for organizing style objects.
+```
+src/components/[ComponentName]/
+├── [ComponentName].tsx       # Component with React Aria
+├── [ComponentName].stories.tsx
+├── [ComponentName].figma.tsx # Figma Code Connect
+└── index.ts
+```
 
-### Styling
+### Styling Utilities
 
-- Tailwind 4 with `@import 'tailwindcss'` syntax
-- Config reference: `@config '../../tailwind.config.js'`
-- Semantic aliases: `primary` (brand), `destructive` (error)
+Use `cx()` from `@/utils/cx` for className merging (extends tailwind-merge):
+```tsx
+import { cx } from '@/utils/cx'
+cx('bg-brand-600', isDisabled && 'opacity-50', className)
+```
 
-## Component Development Workflow
+Use `sortCx()` for organizing style objects to enable Tailwind IntelliSense sorting.
 
-1. **Get Figma Component**: Identify component and its source Figma file
-2. **Create Component Structure**:
-   - Determine the source (e.g., source-a, source-b, shared)
-   - Create: `src/components/<source>/[name]/`
-   - Add component file with doc header linking to Figma
-3. **Build Component**:
-   - Use React Aria primitives for accessibility
-   - Style with Tailwind CSS 4
-   - Use `sortCx()` for organizing variant styles
-4. **Create Stories**:
-   - Organize ArgTypes by category (Appearance, State, Icons, Content, Behavior, Advanced)
-   - Include comprehensive examples
-   - Final story must be "Figma" with link to source
-5. **Set up Code Connect**:
-   - Create .figma.tsx file
-   - Use component SET node-id (colon format: `18:30003`)
-   - Map Figma properties to React props
+### Tailwind Configuration
+
+- Base config: `tailwind.config.js` - shared utilities (spacing, radius, gray colors)
+- Storybook: `tailwind.config.storybook.js` - extends base with CSS variable colors
+- Brands: `tailwind.config.[brand].js` - extends base with hardcoded brand colors
+
+Color naming:
+- `brand-*` / `primary-*` - Brand primary color
+- `secondary-*` - Brand secondary color
+- `gray-*` - Neutral colors
+- `error-*` / `destructive-*` - Red semantic colors
+- `warning-*` - Yellow semantic colors
+- `success-*` - Green semantic colors
 
 ## Storybook Stories
 
@@ -88,7 +115,18 @@ ArgTypes should be organized by category:
 - **Behavior**: href, onChange, onPress
 - **Advanced**: className, style
 
-Final story must be titled "Figma" and link back to the source.
+Final story should be titled "Figma" and link back to the source.
+
+## Figma Code Connect
+
+Component `.figma.tsx` files connect React components to Figma:
+- Use component SET node-id in colon format: `18:30003`
+- Map Figma properties to React props
+
+## Known Issues
+
+Token issues are tracked in `tokens/TOKEN-ISSUES.md`. Currently:
+- Self-referencing radius aliases (workaround in place)
 
 ## Commit Messages
 

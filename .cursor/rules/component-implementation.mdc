@@ -1,0 +1,87 @@
+---
+alwaysApply: true
+---
+
+# Component Implementation Workflow
+
+When implementing a new component from Figma:
+
+## 1. Fetch Figma Data
+Use the Figma MCP to fetch component data from the provided Figma link.
+
+## 2. Create Component Structure
+Create the component directory and files:
+```
+src/components/<name>/
+├── <name>.tsx           # Component with doc header
+├── <name>.stories.tsx   # Storybook stories
+├── <name>.figma.tsx     # Figma Code Connect
+└── index.ts             # Barrel exports
+```
+
+## 3. Add Documentation Header
+Every component file must have a doc comment at the top with link to Figma source:
+```typescript
+/**
+ * ComponentName component
+ * @figma https://www.figma.com/design/<file-id>?node-id=<node-id>
+ */
+```
+
+## 4. Build with React Aria
+Use React Aria Components for accessibility:
+```typescript
+import { Button as AriaButton } from 'react-aria-components'
+```
+
+## 5. Update Imports
+Ensure imports use our project paths:
+- `@/utils/cx` for class merging
+- `@/utils/is-react-component` for component type checking
+
+## 6. Validate Tokens (Figma ↔ Code Sync)
+After implementing, check Storybook for visual issues. If styles look wrong:
+
+1. **Identify missing tokens** - Compare Tailwind classes against token files
+2. **Update tailwind.config.js** - Add missing values to keep the build working
+3. **Log the issue** - Add to `tokens/TOKEN-ISSUES.md` for designer review
+
+## 7. Create Storybook Stories
+Create `<component>.stories.tsx` with:
+- Stories for each variant
+- Stories for each size (if applicable)
+- Stories for each state (default, disabled, loading, etc.)
+- **REQUIRED**: Final story named `Figma` with link back to source
+
+## 8. Export from Index
+Update `index.ts` to export the component and its types.
+
+## 9. Set Up Figma Code Connect
+Create `<name>.figma.tsx` to link the component to Figma Dev Mode:
+
+```typescript
+import figma from '@figma/code-connect'
+import { ComponentName } from './component-name'
+
+// Use the component SET node-id (not a variant), with colon format (18:30003)
+figma.connect(ComponentName, 'https://www.figma.com/design/<file-id>?node-id=<node-id>', {
+  props: {
+    // Map Figma property names exactly as they appear in Figma
+    children: figma.string('Label'),
+    size: figma.enum('Size', { sm: 'sm', md: 'md', lg: 'lg', xl: 'xl', '2xl': '2xl' }),
+    color: figma.enum('Hierarchy', { Primary: 'primary', Secondary: 'secondary' }),
+    isDisabled: figma.enum('State', { Disabled: true }),
+    isLoading: figma.enum('State', { Loading: true }),
+  },
+  example: (props) => <ComponentName {...props} />,
+})
+```
+
+Then publish to Figma:
+```bash
+FIGMA_ACCESS_TOKEN="<token>" npm run figma:publish
+```
+
+**Finding the token:** The Figma access token is in `.mcp.json` under `mcpServers.figma-work.args` (the `--figma-api-key` value).
+
+This enables designers to see real code snippets in Figma Dev Mode.

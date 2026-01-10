@@ -1,0 +1,100 @@
+---
+alwaysApply: true
+---
+
+# Storybook Stories Guidelines
+
+When creating stories for components:
+
+## 1. ArgTypes Organization
+
+Organize props to match Figma's properties panel order. Use minimal, meaningful categories:
+
+```typescript
+argTypes: {
+  // Appearance props first (size, color/variant)
+  size: {
+    control: 'select',
+    options: ['sm', 'md', 'lg', 'xl', '2xl'],
+    table: { category: 'Appearance' },
+  },
+  color: {
+    name: 'color (Hierarchy)',  // Reference Figma terminology
+    control: 'select',
+    table: { category: 'Appearance' },
+  },
+
+  // State props (disabled, loading, etc.)
+  isDisabled: {
+    table: { category: 'State' },
+  },
+
+  // Icon props
+  iconLeading: {
+    control: false,
+    table: { category: 'Icons' },
+  },
+
+  // Content props (children, label)
+  children: {
+    name: 'children (Label)',
+    control: 'text',
+    table: { category: 'Content' },
+  },
+
+  // Advanced/technical props last
+  className: {
+    control: false,
+    table: { category: 'Advanced' },
+  },
+}
+```
+
+## 2. Standard Categories
+
+Use these categories consistently across all components:
+
+| Category | Props |
+|----------|-------|
+| Appearance | size, color, variant |
+| State | isDisabled, isLoading, isSelected |
+| Icons | iconLeading, iconTrailing, icon |
+| Content | children, label, title, description |
+| Behavior | href, onChange, onPress |
+| Advanced | className, style |
+
+## 3. Required Stories
+
+Every component must include:
+- `Default` - basic usage with sensible defaults
+- Variant stories - one for each major variant/color
+- Size stories - showing all size options
+- State stories - disabled, loading, etc.
+- `Figma` - **REQUIRED as final story** with link to source
+
+## 4. Story File Structure
+
+```typescript
+import type { Meta, StoryObj } from '@storybook/react'
+import { Component } from './component'
+
+const meta: Meta<typeof Component> = {
+  title: 'Components/ComponentName',
+  component: Component,
+  parameters: { layout: 'centered' },
+  tags: ['autodocs'],
+  argTypes: {
+    // Organized by category (see above)
+  },
+}
+
+export default meta
+type Story = StoryObj<typeof Component>
+
+// Stories in logical order
+export const Default: Story = { args: { /* defaults */ } }
+export const AllVariants: Story = { /* ... */ }
+export const AllSizes: Story = { /* ... */ }
+// ... other stories ...
+export const Figma: Story = { /* Link to Figma source - MUST BE LAST */ }
+```
