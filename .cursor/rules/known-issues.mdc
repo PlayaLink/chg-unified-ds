@@ -32,3 +32,7 @@ Run `npm run validate:tokens` after updating tokens to check for issues.
 2. **Border color override**: DotStatus uses `ring-gray-200` for its border, but Avatar's status indicator needs `ring-base-white` to match the original design. Avatar overrides this via className.
 
 These should be synced with the Figma design system when possible.
+
+## Tabs Component
+
+**Block Inverted appearance missing color styles in Figma**: The Figma design for Tabs `Block Inverted` variant appears to be missing some color style definitions. Code implementation uses reasonable defaults (dark container bg-gray-800, white selected tab, gray-300 default text) but should be verified against updated Figma specs when available.
