@@ -178,35 +178,24 @@ function extractSystemColors() {
   // Add gray/neutrals
   colors.gray = extractGrayColors();
 
-  // Extract semantic colors from system.accent
+  // Extract ALL accent colors from system.accent
   const accentColors = primitivesTokens.system?.accent || {};
+  const accentColorNames = ['red', 'orange', 'yellow', 'lime', 'green', 'sky', 'cyan', 'blue', 'indigo', 'purple', 'magenta', 'rose', 'amber'];
 
-  // Red for destructive
-  if (accentColors.red) {
-    colors.error = {};
-    colors.destructive = {};
-    for (const [key, token] of Object.entries(accentColors.red)) {
-      const value = transformTokenValue(token, `system.accent.red.${key}`);
-      colors.error[key] = value;
-      colors.destructive[key] = value;
+  for (const colorName of accentColorNames) {
+    if (accentColors[colorName]) {
+      colors[colorName] = {};
+      for (const [key, token] of Object.entries(accentColors[colorName])) {
+        colors[colorName][key] = transformTokenValue(token, `system.accent.${colorName}.${key}`);
+      }
     }
   }
 
-  // Yellow for warning
-  if (accentColors.yellow) {
-    colors.warning = {};
-    for (const [key, token] of Object.entries(accentColors.yellow)) {
-      colors.warning[key] = transformTokenValue(token, `system.accent.yellow.${key}`);
-    }
-  }
-
-  // Green for success
-  if (accentColors.green) {
-    colors.success = {};
-    for (const [key, token] of Object.entries(accentColors.green)) {
-      colors.success[key] = transformTokenValue(token, `system.accent.green.${key}`);
-    }
-  }
+  // Keep semantic aliases pointing to the extracted colors
+  colors.error = colors.red;
+  colors.destructive = colors.red;
+  colors.warning = colors.yellow;
+  colors.success = colors.green;
 
   return colors;
 }
