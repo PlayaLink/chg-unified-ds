@@ -65,24 +65,21 @@ Use these categories consistently across all components:
 
 ## 3. Required Stories
 
-Every component must include:
-- `Default` - basic usage with sensible defaults
-- Variant stories - one for each major variant/color
-- Size stories - showing all size options
-- State stories - disabled, loading, etc.
-- `Interactive` - with `tags: ['show-panel']` to enable Controls panel
-- `Figma` - **REQUIRED as final story** with link to source
+Every component must include exactly 3 stories:
+- `Overview` - shows all variants grouped by property (Appearance, Size, State)
+- `Props` - with `tags: ['show-panel']` to enable Controls panel
+- `SourceCodeAndDesign` - **REQUIRED as final story** with links to GitHub and Figma
 
 ## 4. Addons Panel Control
 
 The addons panel is dynamically shown/hidden based on story tags:
 
-- **Interactive stories**: MUST have `tags: ['show-panel']` to show the Controls panel
+- **Props stories**: MUST have `tags: ['show-panel']` to show the Controls panel
 - **All other stories**: Panel is hidden by default (no tag needed)
 
 ```typescript
-// Interactive story - panel visible
-export const Interactive: Story = {
+// Props story - panel visible
+export const Props: Story = {
   tags: ['show-panel'],  // <-- REQUIRED for Controls panel
   args: {
     children: 'Button',
@@ -101,13 +98,13 @@ export const Overview: Story = {
 
 ```typescript
 import type { Meta, StoryObj } from '@storybook/react'
-import { Component } from './component'
+import { Button } from '../Button'
+import { Component } from './Component'
 
 const meta: Meta<typeof Component> = {
   title: 'Components/ComponentName',
   component: Component,
   parameters: { layout: 'centered' },
-  tags: ['autodocs'],
   argTypes: {
     // Organized by category (see above)
   },
@@ -116,10 +113,34 @@ const meta: Meta<typeof Component> = {
 export default meta
 type Story = StoryObj<typeof Component>
 
-// Stories in logical order
-export const Default: Story = { args: { /* defaults */ } }
-export const AllVariants: Story = { /* ... */ }
-export const AllSizes: Story = { /* ... */ }
-// ... other stories ...
-export const Figma: Story = { /* Link to Figma source - MUST BE LAST */ }
+// =============================================================================
+// OVERVIEW (shows all variants)
+// =============================================================================
+export const Overview: Story = {
+  render: () => (
+    <div className="flex flex-col gap-48">
+      {/* Group variants by property */}
+    </div>
+  ),
+}
+
+// =============================================================================
+// PROPS (with controls)
+// =============================================================================
+export const Props: Story = {
+  tags: ['show-panel'],
+  args: { /* defaults */ },
+}
+
+// =============================================================================
+// SOURCE CODE + DESIGNS
+// =============================================================================
+export const SourceCodeAndDesign: Story = {
+  name: 'Source Code + Designs',
+  render: () => (
+    <div className="flex flex-col items-center gap-24">
+      {/* GitHub and Figma buttons */}
+    </div>
+  ),
+}
 ```
