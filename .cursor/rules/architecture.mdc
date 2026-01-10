@@ -41,6 +41,8 @@ Token files in `tokens/`:
 4. Run `npm run build:tokens` and `npm run build:tailwind`
 5. Log any new issues in `tokens/TOKEN-ISSUES.md`
 
+See `known-issues.mdc` for current token workarounds.
+
 ## Utilities
 
 Two utility modules in `src/utils/`:
