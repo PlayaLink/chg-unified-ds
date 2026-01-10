@@ -107,7 +107,7 @@ export const Props: Story = {
   tags: ['show-panel'],
   render: (args) => (
     <RadioGroup defaultValue="interactive">
-      <Radio value="interactive" {...args} />
+      <Radio {...args} value="interactive" />
     </RadioGroup>
   ),
   args: {

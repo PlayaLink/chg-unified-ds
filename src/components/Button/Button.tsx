@@ -129,7 +129,7 @@ export function Button({
     styles.common.root,
     styles.sizes[size].root,
     styles.variants[variant].root,
-    isIconOnly && 'aspect-square p-0',
+    !!isIconOnly && 'aspect-square p-0',
     className,
   )
 
