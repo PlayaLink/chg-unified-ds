@@ -109,7 +109,7 @@ When tokens change in Figma:
 
 4. **Map Figma to React** - See property mapping below
 
-5. **Create Storybook Stories** - Three stories: Overview, Interactive, Figma
+5. **Create Storybook Stories** - Three stories: Overview, Props, SourceCodeAndDesign
 
 6. **Publish Code Connect** - Run `npm run figma:publish`
 
@@ -205,19 +205,19 @@ import { Button } from '@/components/Button'
 Each component has exactly 3 stories:
 
 1. **Overview** - Shows all variants grouped by Figma property (Appearance, Layout, State, Size)
-2. **Interactive** - Single component with all controls enabled
+2. **Props** - Single component with all controls enabled (named `Props` in code)
 3. **Source Code + Designs** - Links to GitHub source and Figma design (named `SourceCodeAndDesign` in code)
 
 ### Addons Panel Control
 
 The addons panel (Controls/Actions) is dynamically shown/hidden based on story tags:
 
-- **Interactive stories**: Add `tags: ['show-panel']` to show the Controls panel
+- **Props stories**: Add `tags: ['show-panel']` to show the Controls panel
 - **All other stories**: Panel is hidden by default (no tag needed)
 
 ```tsx
-// Interactive story - SHOW panel
-export const Interactive: Story = {
+// Props story - SHOW panel
+export const Props: Story = {
   tags: ['show-panel'],  // <-- Required for panel to appear
   args: {
     children: 'Button',
@@ -230,7 +230,7 @@ export const Overview: Story = {
 }
 ```
 
-This is controlled by the `panel-controller` addon in `.storybook/manager.js`. When adding new components, always add `tags: ['show-panel']` to Interactive stories.
+This is controlled by the `panel-controller` addon in `.storybook/manager.js`. When adding new components, always add `tags: ['show-panel']` to Props stories.
 
 ### ArgTypes Categories
 
