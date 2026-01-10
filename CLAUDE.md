@@ -21,8 +21,10 @@ npm run build            # Build Storybook
 npm run build:tokens     # Generate CSS from Figma token JSON files
 npm run build:tailwind   # Generate brand-specific Tailwind configs from tokens
 npm run validate:tokens  # Check token files for issues (aliases, nulls, etc.)
-npm run figma:publish    # Publish Figma Code Connect (requires FIGMA_ACCESS_TOKEN in .env)
+npm run figma:publish    # Publish Figma Code Connect (requires FIGMA_ACCESS_TOKEN)
 ```
+
+**Note:** The Figma access token can be found in `.mcp.json` under `mcpServers.figma-work.args` (the `--figma-api-key` value).
 
 ## Architecture
 
@@ -64,7 +66,7 @@ When tokens change in Figma:
 
 ### Storybook Theme Switching
 
-Brand switching is implemented in `.storybook/preview.tsx`:
+Brand switching is implemented in `.storybook/preview.tsx` (note: there's also a simpler `preview.ts` but `preview.tsx` contains the full theme implementation):
 - Global type `theme` provides toolbar dropdown
 - Decorator applies `data-theme` attribute to story wrapper
 - CSS in `.storybook/themes/[brand].css` defines brand color variables
@@ -79,6 +81,22 @@ src/components/[ComponentName]/
 ├── [ComponentName].stories.tsx
 ├── [ComponentName].figma.tsx # Figma Code Connect
 └── index.ts
+```
+
+Every component file must have a doc comment linking to Figma source:
+```tsx
+/**
+ * ComponentName component
+ * @figma https://www.figma.com/design/<file-id>?node-id=<node-id>
+ */
+```
+
+### Path Alias
+
+Use `@/` to import from `src/`:
+```tsx
+import { cx } from '@/utils/cx'
+import { Button } from '@/components/Button'
 ```
 
 ### Styling Utilities
