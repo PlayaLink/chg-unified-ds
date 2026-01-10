@@ -28,6 +28,19 @@ const spacingTokens = [
   { name: 'spacing-80', value: '80px', pixels: 80 },
 ]
 
+const screenTokens = [
+  { name: 'screen-mobile-min', value: '375px', pixels: 375 },
+  { name: 'screen-mobile-max', value: '680px', pixels: 680 },
+  { name: 'screen-tablet-min', value: '681px', pixels: 681 },
+  { name: 'screen-tablet-max', value: '1024px', pixels: 1024 },
+  { name: 'screen-desktop-min', value: '1025px', pixels: 1025 },
+  { name: 'screen-desktop-max', value: '1440px', pixels: 1440 },
+]
+
+const paragraphTokens = [
+  { name: 'paragraph-max-width', value: '700px', pixels: 700 },
+]
+
 const SpacingBar = ({ name, value, pixels }: { name: string; value: string; pixels: number }) => (
   <div
     style={{
@@ -145,6 +158,140 @@ export const Overview: Story = {
           <div style={{ padding: '0 24px' }}>
             {spacingTokens.map((token, i) => (
               <SpacingBar key={token.name} {...token} />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Screens */}
+      <div style={{ marginBottom: '48px' }}>
+        <h2 style={{ fontSize: '24px', fontWeight: 500, color: '#181d27', marginBottom: '16px' }}>
+          Screens
+        </h2>
+        <p style={{ fontSize: '16px', color: '#6b7380', maxWidth: '720px', lineHeight: 1.5, marginBottom: '24px' }}>
+          Working from a pre-defined and limited spacing system for wrapping content allows you to work
+          faster and consistently. These pre-defined widths are derived from the primitive spacing values
+          and are useful for defining max widths for sections such as text content and page headings.
+        </p>
+        <div
+          style={{
+            backgroundColor: '#f9fafc',
+            borderRadius: '8px',
+            overflow: 'hidden',
+            border: '1px solid #e6e7eb',
+          }}
+        >
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '180px 80px 1fr',
+              padding: '12px 24px',
+              backgroundColor: '#f3f4f6',
+              borderBottom: '1px solid #e6e7eb',
+            }}
+          >
+            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#6b7380' }}>
+              Token
+            </span>
+            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#6b7380' }}>
+              Value
+            </span>
+            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#6b7380' }}>
+              Visual
+            </span>
+          </div>
+          <div style={{ padding: '0 24px' }}>
+            {screenTokens.map((token) => (
+              <div
+                key={token.name}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '180px 80px 1fr',
+                  alignItems: 'center',
+                  padding: '12px 0',
+                  borderBottom: '1px solid #e6e7eb',
+                }}
+              >
+                <code style={{ fontSize: '14px', fontWeight: 500 }}>{token.name}</code>
+                <span style={{ fontSize: '14px', color: '#6b7380' }}>{token.value}</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <div
+                    style={{
+                      width: `${token.pixels}px`,
+                      height: '24px',
+                      backgroundColor: 'var(--color-brand-500)',
+                      borderRadius: '4px',
+                    }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Paragraph (Line Widths) */}
+      <div style={{ marginBottom: '48px' }}>
+        <h2 style={{ fontSize: '24px', fontWeight: 500, color: '#181d27', marginBottom: '16px' }}>
+          Paragraph (Line Widths)
+        </h2>
+        <p style={{ fontSize: '16px', color: '#6b7380', maxWidth: '720px', lineHeight: 1.5, marginBottom: '24px' }}>
+          Similar to the container variables above, paragraph text such as blog post content have a
+          max-width defined as a separate variable. This ensures all paragraph line lengths are optimized
+          for readability and also allows you to change this max width across your designs in a few clicks.
+        </p>
+        <div
+          style={{
+            backgroundColor: '#f9fafc',
+            borderRadius: '8px',
+            overflow: 'hidden',
+            border: '1px solid #e6e7eb',
+          }}
+        >
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '180px 80px 1fr',
+              padding: '12px 24px',
+              backgroundColor: '#f3f4f6',
+              borderBottom: '1px solid #e6e7eb',
+            }}
+          >
+            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#6b7380' }}>
+              Token
+            </span>
+            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#6b7380' }}>
+              Value
+            </span>
+            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#6b7380' }}>
+              Visual
+            </span>
+          </div>
+          <div style={{ padding: '0 24px' }}>
+            {paragraphTokens.map((token) => (
+              <div
+                key={token.name}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '180px 80px 1fr',
+                  alignItems: 'center',
+                  padding: '12px 0',
+                  borderBottom: '1px solid #e6e7eb',
+                }}
+              >
+                <code style={{ fontSize: '14px', fontWeight: 500 }}>{token.name}</code>
+                <span style={{ fontSize: '14px', color: '#6b7380' }}>{token.value}</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <div
+                    style={{
+                      width: `${token.pixels}px`,
+                      height: '24px',
+                      backgroundColor: 'var(--color-brand-500)',
+                      borderRadius: '4px',
+                    }}
+                  />
+                </div>
+              </div>
             ))}
           </div>
         </div>
