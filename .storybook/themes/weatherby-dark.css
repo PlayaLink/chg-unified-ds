@@ -1,0 +1,38 @@
+/* Weatherby Brand Theme - Dark Mode */
+[data-theme="weatherby"][data-mode="dark"] {
+  --color-brand-25: #40051a;
+  --color-brand-50: #6b0a2e;
+  --color-brand-100: #8a103c;
+  --color-brand-200: #a9174a;
+  --color-brand-300: #c81e58;
+  --color-brand-400: #d24978;
+  --color-brand-500: #de7498;
+  --color-brand-600: #e9a0b8;
+  --color-brand-700: #f3cbd8;
+  --color-brand-800: #f9e5ec;
+  --color-brand-900: #fcf2f5;
+
+  --color-primary-25: #40051a;
+  --color-primary-50: #6b0a2e;
+  --color-primary-100: #8a103c;
+  --color-primary-200: #a9174a;
+  --color-primary-300: #c81e58;
+  --color-primary-400: #d24978;
+  --color-primary-500: #de7498;
+  --color-primary-600: #e9a0b8;
+  --color-primary-700: #f3cbd8;
+  --color-primary-800: #f9e5ec;
+  --color-primary-900: #fcf2f5;
+
+  --color-secondary-25: #0b352a;
+  --color-secondary-50: #125a46;
+  --color-secondary-100: #19785d;
+  --color-secondary-200: #1f9574;
+  --color-secondary-300: #25b28b;
+  --color-secondary-400: #4fc7a2;
+  --color-secondary-500: #78d4b8;
+  --color-secondary-600: #a1e2cf;
+  --color-secondary-700: #cbefe5;
+  --color-secondary-800: #e5f7f2;
+  --color-secondary-900: #f2fbf8;
+}

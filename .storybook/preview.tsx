@@ -2,13 +2,21 @@ import type { Preview } from '@storybook/react'
 import { useEffect } from 'react'
 import '../src/styles/globals.css'
 
-// Import all brand theme CSS variables
+// Import all brand theme CSS variables (light mode)
 import './themes/weatherby.css'
 import './themes/comphealth.css'
 import './themes/modio.css'
 import './themes/connect.css'
 import './themes/locumsmart.css'
 import './themes/wireframe.css'
+
+// Import all brand theme CSS variables (dark mode)
+import './themes/weatherby-dark.css'
+import './themes/comphealth-dark.css'
+import './themes/modio-dark.css'
+import './themes/connect-dark.css'
+import './themes/locumsmart-dark.css'
+import './themes/wireframe-dark.css'
 
 const preview: Preview = {
   parameters: {
@@ -38,18 +46,33 @@ const preview: Preview = {
         dynamicTitle: true,
       },
     },
+    colorMode: {
+      description: 'Color mode (light/dark)',
+      defaultValue: 'light',
+      toolbar: {
+        title: 'Mode',
+        icon: 'circlehollow',
+        items: [
+          { value: 'light', title: 'Light', icon: 'circlehollow' },
+          { value: 'dark', title: 'Dark', icon: 'circle' },
+        ],
+        dynamicTitle: true,
+      },
+    },
   },
   decorators: [
     (Story, context) => {
       const theme = context.globals.theme || 'weatherby'
+      const colorMode = context.globals.colorMode || 'light'
 
       useEffect(() => {
-        // Apply theme class to document root
+        // Apply theme and color mode to document root
         document.documentElement.setAttribute('data-theme', theme)
-      }, [theme])
+        document.documentElement.setAttribute('data-mode', colorMode)
+      }, [theme, colorMode])
 
       return (
-        <div data-theme={theme}>
+        <div data-theme={theme} data-mode={colorMode}>
           <Story />
         </div>
       )

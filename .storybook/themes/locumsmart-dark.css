@@ -1,0 +1,38 @@
+/* LocumSmart Brand Theme - Dark Mode */
+[data-theme="locumsmart"][data-mode="dark"] {
+  --color-brand-25: #004b88;
+  --color-brand-50: #006aa8;
+  --color-brand-100: #0c6bb0;
+  --color-brand-200: #008dcf;
+  --color-brand-300: #009add;
+  --color-brand-400: #00a7e1;
+  --color-brand-500: #41b7e5;
+  --color-brand-600: #78cbec;
+  --color-brand-700: #aee0f4;
+  --color-brand-800: #e3f5fa;
+  --color-brand-900: #f2fafd;
+
+  --color-primary-25: #004b88;
+  --color-primary-50: #006aa8;
+  --color-primary-100: #0c6bb0;
+  --color-primary-200: #008dcf;
+  --color-primary-300: #009add;
+  --color-primary-400: #00a7e1;
+  --color-primary-500: #41b7e5;
+  --color-primary-600: #78cbec;
+  --color-primary-700: #aee0f4;
+  --color-primary-800: #e3f5fa;
+  --color-primary-900: #f2fafd;
+
+  --color-secondary-25: #793515;
+  --color-secondary-50: #963e16;
+  --color-secondary-100: #bc4d12;
+  --color-secondary-200: #e36613;
+  --color-secondary-300: #f2821f;
+  --color-secondary-400: #f59e42;
+  --color-secondary-500: #f9c278;
+  --color-secondary-600: #fbdcad;
+  --color-secondary-700: #feefd6;
+  --color-secondary-800: #fef8ee;
+  --color-secondary-900: #fefbf5;
+}
