@@ -40,3 +40,9 @@ These should be synced with the Figma design system when possible.
 ## StepIndicator Component
 
 **Progress line color behavior not explicitly defined in Figma**: The Figma design doesn't explicitly show the connector line color when transitioning between complete and active/error steps. Code implementation extends the green "complete" line color all the way to the current step (active or error) to more clearly indicate progress. This means the line leading INTO the active or error step is green, while lines after remain gray. This applies to both active steps (in progress) and error steps (failed at that point). This decision should be confirmed with the design system manager.
+
+## Tag Component
+
+**Nested padding in Figma vs single padding in code**: The Figma Tag component has padding split across two nested frames (outer container + inner label frame). In code, we consolidate this into a single padding value on the parent element. This works but can cause confusion when comparing Figma specs to code. Recommend consolidating padding to a single frame in Figma for consistency and easier design-to-code translation.
+
+**`iconRight` prop not in Figma**: The code implementation includes an `iconRight` prop that is not present in the Figma design. This was added to support common use cases like clearable/dismissible tags where an X (close) icon appears on the right side. Recommend adding an "Icon Right" appearance option in Figma to support this pattern.
