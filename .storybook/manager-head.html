@@ -1,0 +1,34 @@
+<style>
+  /**
+   * Custom sidebar icon colors by section
+   * - Foundations: Orange (#f97316)
+   * - Components: Blue (#3b82f6)
+   * 
+   * Storybook 8 uses data-item-id attributes on sidebar items.
+   * The IDs follow the pattern: section-item--story (e.g., foundations-colors--overview)
+   */
+  
+  /* Target Foundations section - orange icons */
+  [data-item-id="foundations"] svg,
+  [data-item-id^="foundations-"] svg {
+    color: #f97316 !important;
+  }
+  
+  /* Target Components section - blue icons */
+  [data-item-id="components"] svg,
+  [data-item-id^="components-"] svg {
+    color: #3b82f6 !important;
+  }
+  
+  /* Alternative selectors using aria-label patterns */
+  button[id^="foundations"] svg,
+  a[id^="foundations"] svg {
+    color: #f97316 !important;
+  }
+  
+  button[id^="components"] svg,
+  a[id^="components"] svg {
+    color: #3b82f6 !important;
+  }
+</style>
+
