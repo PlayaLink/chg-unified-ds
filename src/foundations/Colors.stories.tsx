@@ -91,7 +91,7 @@ export const Overview: Story = {
         description="Base colors—black, white, and transparent—provide fundamental contrast, clarity, and layering essential for building a flexible and accessible design system."
         colors={[
           { name: 'White', value: '#ffffff' },
-          { name: 'Black', value: '#000000' },
+          { name: 'Black', value: '#111828' },
         ]}
       />
 
@@ -258,7 +258,10 @@ export const Overview: Story = {
 // Border colors
 <div className="border-gray-200" />
 
-// Base colors (use 'base-' prefix)
+// Base colors (both forms work)
+<div className="bg-white" />
+<span className="text-black" />
+// Or with 'base-' prefix
 <div className="bg-base-white" />
 <span className="text-base-black" />`}</code>
         </pre>

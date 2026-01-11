@@ -167,10 +167,27 @@ function extractGrayColors() {
  * Extract system semantic colors
  */
 function extractSystemColors() {
+  // Get white and black from tokens (source of truth)
+  const systemWhite = primitivesTokens.system?.white?.$value;
+  const systemBlack = primitivesTokens.system?.black?.$value;
+
+  if (!systemWhite) {
+    throw new Error('Missing required token: system.white - check Primitives.Default.tokens.json');
+  }
+  if (!systemBlack) {
+    throw new Error('Missing required token: system.black - check Primitives.Default.tokens.json');
+  }
+
   const colors = {
+    // Root-level colors (enables bg-white, bg-black, text-white, etc.)
+    white: systemWhite,
+    black: systemBlack,
+    transparent: 'transparent',
+
+    // Namespaced base colors (backwards compatibility with bg-base-white, etc.)
     base: {
-      white: '#ffffff',
-      black: '#000000',
+      white: systemWhite,
+      black: systemBlack,
       transparent: 'transparent',
     },
   };
