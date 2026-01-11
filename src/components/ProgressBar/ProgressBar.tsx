@@ -15,8 +15,11 @@ export const styles = sortCx({
     bottom: 'flex flex-col gap-8',
     floating: 'relative',
   },
-  track: 'relative h-8 flex-1 overflow-hidden rounded-8 bg-gray-200',
-  fill: 'absolute inset-y-0 left-0 rounded-8 bg-brand-600 transition-all duration-300',
+  track: {
+    base: 'relative h-8 w-full overflow-hidden rounded-8 bg-gray-200',
+    right: 'flex-1',
+  },
+  fill: 'absolute top-0 left-0 h-full rounded-8 bg-brand-600 transition-all duration-300',
   label: {
     static: 'text-sm font-medium text-gray-700',
     floating: [
@@ -89,7 +92,7 @@ export function ProgressBar({
       aria-label={`Progress: ${percentage}`}
     >
       {label === 'top-floating' && renderLabel()}
-      <div className={styles.track}>
+      <div className={cx(styles.track.base, isRight && styles.track.right)}>
         <div
           className={styles.fill}
           style={{ width: `${clampedValue}%` }}
