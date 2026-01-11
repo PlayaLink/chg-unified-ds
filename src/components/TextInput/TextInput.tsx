@@ -27,13 +27,11 @@ export const styles = sortCx({
     default: {
       input: 'h-[40px] rounded-4 text-md',
       inputWithIcon: 'pl-[36px] pr-12',
-      inputWithPrefix: 'pl-[36px] pr-12',
       inputPlain: 'px-12',
     },
     compact: {
       input: 'h-[32px] rounded-4 text-sm',
       inputWithIcon: 'pl-[32px] pr-12',
-      inputWithPrefix: 'pl-[32px] pr-12',
       inputPlain: 'px-12',
     },
   },
@@ -44,10 +42,10 @@ export const styles = sortCx({
   variants: {
     text: {},
     search: {},
-    url: { prefix: 'https://' },
+    url: { prefix: 'https://', prefixPadding: 'pl-64' },
     action: {},
     time: {},
-    currency: { prefix: '$' },
+    currency: { prefix: '$', prefixPadding: 'pl-[24px]' },
   },
 })
 
@@ -87,6 +85,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   ) {
     const variantConfig = styles.variants[variant]
     const hasPrefix = 'prefix' in variantConfig && variantConfig.prefix
+    const prefixPadding = 'prefixPadding' in variantConfig ? variantConfig.prefixPadding : ''
     const hasIcon = Boolean(icon)
 
     // Determine input type based on variant
@@ -118,7 +117,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             hasIcon
               ? styles.sizes[size].inputWithIcon
               : hasPrefix
-                ? styles.sizes[size].inputWithPrefix
+                ? `${prefixPadding} pr-12`
                 : styles.sizes[size].inputPlain,
             styles.states[state].input,
             inputClassName,
