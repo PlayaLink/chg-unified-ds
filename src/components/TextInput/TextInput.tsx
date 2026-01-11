@@ -26,14 +26,14 @@ export const styles = sortCx({
   sizes: {
     default: {
       input: 'h-[40px] rounded-4 text-md',
-      inputWithIcon: 'pl-36 pr-12',
-      inputWithPrefix: 'pl-36 pr-12',
+      inputWithIcon: 'pl-[36px] pr-12',
+      inputWithPrefix: 'pl-[36px] pr-12',
       inputPlain: 'px-12',
     },
     compact: {
       input: 'h-[32px] rounded-4 text-sm',
-      inputWithIcon: 'pl-32 pr-12',
-      inputWithPrefix: 'pl-32 pr-12',
+      inputWithIcon: 'pl-[32px] pr-12',
+      inputWithPrefix: 'pl-[32px] pr-12',
       inputPlain: 'px-12',
     },
   },
