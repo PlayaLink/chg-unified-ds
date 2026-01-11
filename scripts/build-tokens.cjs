@@ -4,9 +4,9 @@
  * Design Token Build Script
  *
  * Converts W3C Design Tokens (from Figma export) into CSS custom properties.
- * Supports multiple Figma source files.
+ * Resolves token references like {token.path} to actual values.
  *
- * Usage: node scripts/build-tokens.js
+ * Usage: node scripts/build-tokens.cjs
  */
 
 const fs = require('fs');
@@ -21,18 +21,78 @@ if (!fs.existsSync(OUTPUT_DIR)) {
 }
 
 /**
- * Flatten nested token object to CSS variable format
+ * Get value at a dot-notation path in an object
  */
-function flattenTokens(obj, prefix = '') {
+function getValueAtPath(obj, pathStr) {
+  const parts = pathStr.split('.');
+  let current = obj;
+
+  for (const part of parts) {
+    if (current && typeof current === 'object' && part in current) {
+      current = current[part];
+    } else {
+      return undefined;
+    }
+  }
+
+  // If we got a token object with $value, return that
+  if (current && typeof current === 'object' && '$value' in current) {
+    return current.$value;
+  }
+
+  return current;
+}
+
+/**
+ * Resolve token references in a value
+ * References look like: {some.token.path}
+ */
+function resolveReferences(value, allTokens, maxDepth = 10) {
+  if (typeof value !== 'string') return value;
+
+  const refPattern = /\{([^}]+)\}/g;
+  let resolved = value;
+  let depth = 0;
+
+  while (refPattern.test(resolved) && depth < maxDepth) {
+    depth++;
+    resolved = resolved.replace(refPattern, (match, tokenPath) => {
+      const refValue = getValueAtPath(allTokens, tokenPath);
+      if (refValue !== undefined) {
+        return refValue;
+      }
+      // Try with different root prefixes
+      for (const prefix of ['uds', 'system', 'design-system']) {
+        const altPath = tokenPath.startsWith(prefix + '.') ? tokenPath : `${prefix}.${tokenPath}`;
+        const altValue = getValueAtPath(allTokens, altPath);
+        if (altValue !== undefined) {
+          return altValue;
+        }
+      }
+      // Return original if not found
+      console.warn(`  Warning: Could not resolve reference: ${match}`);
+      return match;
+    });
+    refPattern.lastIndex = 0; // Reset regex
+  }
+
+  return resolved;
+}
+
+/**
+ * Flatten nested token object and resolve references
+ */
+function flattenTokens(obj, allTokens, prefix = '') {
   const result = {};
 
   for (const [key, value] of Object.entries(obj)) {
     const newKey = prefix ? `${prefix}-${key}` : key;
 
     if (value && typeof value === 'object' && !value.$value) {
-      Object.assign(result, flattenTokens(value, newKey));
-    } else if (value && value.$value) {
-      result[newKey] = value.$value;
+      Object.assign(result, flattenTokens(value, allTokens, newKey));
+    } else if (value && value.$value !== undefined) {
+      // Resolve any references in the value
+      result[newKey] = resolveReferences(value.$value, allTokens);
     }
   }
 
@@ -52,18 +112,34 @@ function sanitizeKey(key) {
 }
 
 /**
- * Convert tokens to CSS custom properties
+ * Deep merge objects
  */
-function generateCSSVariables(tokens, source = '') {
-  const flattened = flattenTokens(tokens);
-  let css = `:root {\n  /* Source: ${source} */\n`;
+function deepMerge(target, source) {
+  const result = { ...target };
+
+  for (const key of Object.keys(source)) {
+    if (source[key] && typeof source[key] === 'object' && !source[key].$value) {
+      result[key] = deepMerge(result[key] || {}, source[key]);
+    } else {
+      result[key] = source[key];
+    }
+  }
+
+  return result;
+}
+
+/**
+ * Convert resolved tokens to CSS custom properties
+ */
+function generateCSSVariables(flattened) {
+  let css = ':root {\n';
 
   for (const [key, value] of Object.entries(flattened)) {
     const varName = `--${sanitizeKey(key)}`;
     css += `  ${varName}: ${value};\n`;
   }
 
-  css += '}\n\n';
+  css += '}\n';
   return css;
 }
 
@@ -78,35 +154,63 @@ async function build() {
 
   if (tokenFiles.length === 0) {
     console.log('No token files found in tokens/ directory.');
-    console.log('Add your Figma token exports as *.tokens.json files.\n');
     return;
   }
 
-  console.log('Found token files:');
-  tokenFiles.forEach(f => console.log(`  - ${f}`));
+  // Define load order - primitives first, then core, then semantic
+  const loadOrder = [
+    'Primitives.Default.tokens.json',
+    'Core.default.tokens.json',
+    'Design System.Light.tokens.json',
+  ];
+
+  // Sort files by load order, with unmatched files at the end
+  const sortedFiles = tokenFiles.sort((a, b) => {
+    const aIndex = loadOrder.indexOf(a);
+    const bIndex = loadOrder.indexOf(b);
+    if (aIndex === -1 && bIndex === -1) return 0;
+    if (aIndex === -1) return 1;
+    if (bIndex === -1) return -1;
+    return aIndex - bIndex;
+  });
+
+  console.log('Loading token files in order:');
+  sortedFiles.forEach(f => console.log(`  - ${f}`));
   console.log('');
 
-  let allCss = '/* Generated from Figma tokens via npm run build:tokens */\n';
-  allCss += '/* DO NOT EDIT MANUALLY */\n\n';
+  // Merge all tokens into one object for reference resolution
+  let allTokens = {};
 
-  // Process each token file
-  for (const file of tokenFiles) {
+  for (const file of sortedFiles) {
+    // Skip brand-specific files for the main tokens.css
+    if (file.includes('.Light.') || file.includes('.Dark.')) {
+      if (!file.includes('Design System')) {
+        continue; // Skip brand files like Weatherby.Light, etc.
+      }
+    }
+
     const filePath = path.join(TOKENS_DIR, file);
     const tokens = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-    const css = generateCSSVariables(tokens, file);
-    allCss += css;
+    allTokens = deepMerge(allTokens, tokens);
   }
+
+  console.log('Resolving token references...');
+
+  // Flatten and resolve all references
+  const flattened = flattenTokens(allTokens, allTokens);
+
+  // Generate CSS
+  let css = '/* Generated from Figma tokens via npm run build:tokens */\n';
+  css += '/* DO NOT EDIT MANUALLY */\n\n';
+  css += generateCSSVariables(flattened);
 
   // Write combined CSS
   const cssPath = path.join(OUTPUT_DIR, 'tokens.css');
-  fs.writeFileSync(cssPath, allCss);
-  console.log(`Generated: ${cssPath}`);
+  fs.writeFileSync(cssPath, css);
+  console.log(`\nGenerated: ${cssPath}`);
+  console.log(`  ${Object.keys(flattened).length} CSS variables`);
 
   console.log('\nDone! Your design tokens are ready.');
-  console.log('\nNext steps:');
-  console.log('1. Update tailwind.config.js with token values if needed');
-  console.log('2. Use Tailwind classes in your components');
-  console.log('3. When Figma tokens change, re-export and run this script');
 }
 
 build().catch(console.error);

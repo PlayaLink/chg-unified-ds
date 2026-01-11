@@ -4,7 +4,15 @@ A multi-brand design system built with React, React Aria Components, and Tailwin
 
 ## Installation
 
-### 1. Configure npm for GitHub Packages
+### Option 1: npm (Public Registry)
+
+```bash
+npm install @oxymormon/chg-unified-ds
+```
+
+### Option 2: GitHub Packages (Private)
+
+If using the private GitHub Packages version, first configure npm:
 
 Create or update `.npmrc` in your project root:
 
@@ -15,22 +23,40 @@ Create or update `.npmrc` in your project root:
 
 Your GitHub token needs the `read:packages` scope.
 
-### 2. Install the package
+Then install:
 
 ```bash
 npm install @jordanchghealthcare/chg-unified-ds
 ```
 
-### 3. Configure Tailwind CSS
+> **Note:** Replace `@oxymormon` with `@jordanchghealthcare` in all import paths if using GitHub Packages.
 
-The design system requires Tailwind CSS 4. Import the design system's styles in your main CSS file:
+## Setup
+
+### 1. Configure CSS
+
+Import the design system styles in your main CSS file:
 
 ```css
 @import "tailwindcss";
-@import "@jordanchghealthcare/chg-unified-ds/styles";
+@config "@oxymormon/chg-unified-ds/tailwind.config.storybook";
+
+/* Import design system tokens */
+@import "@oxymormon/chg-unified-ds/styles/tokens";
+
+/* Import brand themes */
+@import "@oxymormon/chg-unified-ds/themes/weatherby";
+@import "@oxymormon/chg-unified-ds/themes/comphealth";
+@import "@oxymormon/chg-unified-ds/themes/connect";
+@import "@oxymormon/chg-unified-ds/themes/locumsmart";
+@import "@oxymormon/chg-unified-ds/themes/modio";
+@import "@oxymormon/chg-unified-ds/themes/wireframe";
+
+/* Scan design system for Tailwind classes */
+@source "node_modules/@oxymormon/chg-unified-ds/dist/**/*.js";
 ```
 
-### 4. Add theme attribute
+### 2. Add theme attribute
 
 Add the `data-theme` attribute to your app's root element:
 
@@ -40,12 +66,12 @@ Add the `data-theme` attribute to your app's root element:
 </div>
 ```
 
-Available themes: `weatherby`, `comphealth`, `gsi`, `healthcare`
+Available themes: `weatherby`, `comphealth`, `connect`, `locumsmart`, `modio`, `wireframe`
 
 ## Usage
 
 ```tsx
-import { Button, Avatar, Tag } from '@jordanchghealthcare/chg-unified-ds'
+import { Button, Avatar, Tag } from '@oxymormon/chg-unified-ds'
 
 function App() {
   return (
@@ -61,28 +87,35 @@ function App() {
 ## Available Components
 
 - Accordion
+- ActionMenu
 - Avatar
-- Badge
-- Breadcrumb
 - Button
 - Checkbox
 - Chip
-- Dialog
+- CounterBadge
+- Divider
+- DotStatus
 - Field (Input, Select, Textarea)
-- Link
-- Menu
-- Pagination
-- Popover
-- Radio
-- Slot
+- ProgressBar
+- Radio / RadioGroup
+- Status
 - StepIndicator
-- Switch
-- Table
 - Tabs
 - Tag
-- Textarea
 - Toast
+- Toggle
 - Tooltip
+
+## Package Exports
+
+```
+@oxymormon/chg-unified-ds           # Main components
+@oxymormon/chg-unified-ds/styles/tokens    # CSS design tokens
+@oxymormon/chg-unified-ds/styles/globals   # Global styles
+@oxymormon/chg-unified-ds/themes/*         # Brand theme files
+@oxymormon/chg-unified-ds/tailwind.config  # Base Tailwind config
+@oxymormon/chg-unified-ds/tailwind.config.storybook  # Storybook Tailwind config (with CSS variable colors)
+```
 
 ---
 
@@ -105,6 +138,9 @@ npm run build
 
 # Build library for publishing
 npm run build:lib
+
+# Build design tokens
+npm run build:tokens
 ```
 
 ### Token Workflow
@@ -119,7 +155,10 @@ npm run build:lib
    npm run build:tokens
    ```
 
-3. Update `tailwind.config.js` if semantic changes are needed
+3. Rebuild the library:
+   ```bash
+   npm run build:lib
+   ```
 
 ### Figma Code Connect
 
@@ -139,6 +178,7 @@ src/
   foundations/      # Design foundation docs
   styles/           # Global styles and tokens
   utils/            # Utility functions
+tokens/             # Figma token exports
 ```
 
 ### Adding Components

@@ -30,6 +30,10 @@ export { Toast } from './components/Toast'
 export { Toggle } from './components/Toggle'
 export { Tooltip, TooltipTrigger } from './components/Tooltip'
 
+// Patterns
+export { ActionMenu, ActionMenuItem, ActionMenuDivider } from './patterns/ActionMenu'
+export { SideNavigation, SideNavigationSearch, SideNavigationSection, SideNavigationItem, SideNavigationSubItem, SideNavigationAccount } from './patterns/SideNavigation'
+
 // Types
 export type { AccordionProps, AccordionItemProps } from './components/Accordion'
 export type { AvatarProps, AvatarSize, AvatarStatus } from './components/Avatar'
@@ -56,6 +60,8 @@ export type { TextareaProps, TextareaSize, TextareaState } from './components/Te
 export type { ToastProps, ToastSize, ToastAppearance, ToastActions } from './components/Toast'
 export type { ToggleProps, ToggleSize, ToggleState } from './components/Toggle'
 export type { TooltipProps, TooltipTriggerProps, TooltipAppearance, TooltipPlacement } from './components/Tooltip'
+export type { ActionMenuProps, ActionMenuItemProps, ActionMenuDividerProps } from './patterns/ActionMenu'
+export type { SideNavigationProps, SideNavigationSearchProps, SideNavigationSectionProps, SideNavigationItemProps, SideNavigationSubItemProps, SideNavigationAccountProps } from './patterns/SideNavigation'
 
 // Utilities
 export { cx, sortCx } from './utils/cx'
