@@ -17,6 +17,7 @@ dist/
 # Local config
 .mcp.json
 .planning/
+.documentation/
 
 # Temp
 *.log
