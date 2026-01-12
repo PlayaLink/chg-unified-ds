@@ -1,6 +1,7 @@
 /**
  * DotStatus component
  * @figma https://www.figma.com/design/r7KRvL85GNIIMn4iM9gKvo/Design-System--Components--Copy-?node-id=450-6210
+ * @storybook https://www.chg-unified-design.com/?path=/story/components-dotstatus--props
  */
 'use client'
 

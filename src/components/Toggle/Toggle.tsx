@@ -1,6 +1,7 @@
 /**
  * Toggle component - switch toggle with optional indeterminate state
  * @figma https://www.figma.com/design/r7KRvL85GNIIMn4iM9gKvo/Design-System--Components--Copy-?node-id=34-3334
+ * @storybook https://www.chg-unified-design.com/?path=/story/components-toggle--props
  */
 'use client'
 

@@ -1,6 +1,7 @@
 /**
  * Tag component - label tag with optional icon
  * @figma https://www.figma.com/design/r7KRvL85GNIIMn4iM9gKvo/Design-System--Components--Copy-?node-id=717-4274
+ * @storybook https://www.chg-unified-design.com/?path=/story/components-tag--props
  */
 'use client'
 

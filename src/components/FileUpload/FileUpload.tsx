@@ -1,6 +1,7 @@
 /**
  * FileUpload component - dropzone for file uploads
  * @figma https://www.figma.com/design/r7KRvL85GNIIMn4iM9gKvo/Design-System--Components--Copy-?node-id=3765-8060
+ * @storybook https://www.chg-unified-design.com/?path=/story/components-fileupload--props
  */
 'use client'
 

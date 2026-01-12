@@ -1,6 +1,7 @@
 /**
  * Avatar component
  * @figma https://www.figma.com/design/r7KRvL85GNIIMn4iM9gKvo/Design-System--Components--Copy-?node-id=326-10076
+ * @storybook https://www.chg-unified-design.com/?path=/story/components-avatar--props
  */
 'use client'
 

@@ -1,6 +1,7 @@
 /**
  * Field component - form field wrapper with label, helper text, and character counter
  * @figma https://www.figma.com/design/r7KRvL85GNIIMn4iM9gKvo/Design-System--Components--Copy-?node-id=4501-15801
+ * @storybook https://www.chg-unified-design.com/?path=/story/components-field--props
  */
 'use client'
 

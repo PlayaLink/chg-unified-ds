@@ -1,6 +1,7 @@
 /**
  * PillToggle component - selectable pill-shaped toggle button
  * @figma https://www.figma.com/design/r7KRvL85GNIIMn4iM9gKvo/Design-System--Components--Copy-?node-id=717-4264
+ * @storybook https://www.chg-unified-design.com/?path=/story/components-pilltoggle--props
  */
 'use client'
 

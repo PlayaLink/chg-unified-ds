@@ -1,6 +1,7 @@
 /**
  * Dropdown component (trigger only)
  * @figma https://www.figma.com/design/r7KRvL85GNIIMn4iM9gKvo/Design-System--Components--Copy-?node-id=23-944
+ * @storybook https://www.chg-unified-design.com/?path=/story/components-dropdown--props
  */
 'use client'
 

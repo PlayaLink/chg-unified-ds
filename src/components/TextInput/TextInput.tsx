@@ -1,6 +1,7 @@
 /**
  * TextInput component
  * @figma https://www.figma.com/design/r7KRvL85GNIIMn4iM9gKvo/Design-System--Components--Copy-?node-id=21-188
+ * @storybook https://www.chg-unified-design.com/?path=/story/components-textinput--props
  */
 'use client'
 

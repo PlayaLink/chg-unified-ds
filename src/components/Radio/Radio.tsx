@@ -1,6 +1,7 @@
 /**
  * Radio component
  * @figma https://www.figma.com/design/r7KRvL85GNIIMn4iM9gKvo/Design-System--Components--Copy-?node-id=5282-1239
+ * @storybook https://www.chg-unified-design.com/?path=/story/components-radio--props
  */
 'use client'
 

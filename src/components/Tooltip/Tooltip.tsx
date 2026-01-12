@@ -1,6 +1,7 @@
 /**
  * Tooltip component
  * @figma https://www.figma.com/design/r7KRvL85GNIIMn4iM9gKvo/Design-System--Components--Copy-?node-id=730-22084
+ * @storybook https://www.chg-unified-design.com/?path=/story/components-tooltip--props
  */
 'use client'
 

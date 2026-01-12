@@ -1,6 +1,7 @@
 /**
  * Divider component
  * @figma https://www.figma.com/design/r7KRvL85GNIIMn4iM9gKvo/Design-System--Components--Copy-?node-id=73-674
+ * @storybook https://www.chg-unified-design.com/?path=/story/components-divider--props
  */
 'use client'
 

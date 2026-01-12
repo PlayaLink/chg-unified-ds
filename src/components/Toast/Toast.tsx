@@ -1,6 +1,7 @@
 /**
  * Toast component
  * @figma https://www.figma.com/design/r7KRvL85GNIIMn4iM9gKvo/Design-System--Components--Copy-?node-id=4397-6690
+ * @storybook https://www.chg-unified-design.com/?path=/story/components-toast--props
  */
 'use client'
 
