@@ -17,7 +17,7 @@ If using the private GitHub Packages version, first configure npm:
 Create or update `.npmrc` in your project root:
 
 ```
-@jordanchghealthcare:registry=https://npm.pkg.github.com
+@playalink:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=YOUR_GITHUB_TOKEN
 ```
 
@@ -26,10 +26,10 @@ Your GitHub token needs the `read:packages` scope.
 Then install:
 
 ```bash
-npm install @jordanchghealthcare/chg-unified-ds
+npm install @playalink/chg-unified-ds
 ```
 
-> **Note:** Replace `@oxymormon` with `@jordanchghealthcare` in all import paths if using GitHub Packages.
+> **Note:** Replace `@oxymormon` with `@playalink` in all import paths if using GitHub Packages.
 
 ## Setup
 

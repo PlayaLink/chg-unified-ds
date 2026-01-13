@@ -33,6 +33,10 @@
     "tailwind.config.cjs",
     "tailwind.config.storybook.cjs"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PlayaLink/chg-unified-ds.git"
+  },
   "engines": {
     "node": ">=20.0.0"
   },
