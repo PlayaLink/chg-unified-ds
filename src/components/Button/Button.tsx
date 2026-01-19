@@ -24,18 +24,22 @@ export const styles = sortCx({
   sizes: {
     xs: {
       root: 'gap-4 rounded-6 px-8 py-4 text-xs',
+      iconOnly: 'px-4 py-4',
       icon: 'size-[14px]',
     },
     sm: {
       root: 'gap-6 rounded-8 px-12 py-8 text-sm',
+      iconOnly: 'px-6 py-6',
       icon: 'size-[16px]',
     },
     md: {
       root: 'gap-8 rounded-8 px-14 py-10 text-sm',
+      iconOnly: 'px-8 py-8',
       icon: 'size-[18px]',
     },
     lg: {
       root: 'gap-8 rounded-8 px-18 py-12 text-md',
+      iconOnly: 'px-10 py-10',
       icon: 'size-[20px]',
     },
   },
@@ -123,14 +127,15 @@ export function Button({
   rel,
   ...props
 }: ButtonProps) {
-  const isIconOnly = (IconLeading || IconTrailing) && !children
+  const isIconOnly = !!(IconLeading || IconTrailing) && !children
   const iconClassName = cx(styles.common.icon, styles.sizes[size].icon)
 
   const sharedClassName = cx(
     styles.common.root,
     styles.sizes[size].root,
     styles.variants[variant].root,
-    !!isIconOnly && 'aspect-square p-0',
+    isIconOnly && styles.sizes[size].iconOnly,
+    isIconOnly && 'aspect-square',
     className,
   )
 
