@@ -22,6 +22,12 @@ import { Icon, createIcon } from '@oxymormon/chg-unified-ds';
   Copy
 </Button>
 
+// Icon-only Button (no children)
+<Button 
+  iconLeading={({ className }) => <Icon name="copy" className={className} />}
+  aria-label="Copy to clipboard"
+/>
+
 // With createIcon helper
 const CopyIcon = createIcon('copy');
 <Button iconLeading={CopyIcon}>Copy</Button>
@@ -59,4 +65,4 @@ const CopyIcon = createIcon('copy');
 
 ## Available Icons
 
-`copy`, `check`, `chevron-down`, `caret-down`, `sign-out`, `trash`
+`copy`, `check`, `chevron-down`, `caret-down`, `sign-out`, `trash`, `plus`, `clock-counter-clockwise`, `sliders`

@@ -13,6 +13,9 @@ import {
   CaretDown,
   SignOut,
   Trash,
+  Plus,
+  ClockCounterClockwise,
+  Sliders,
 } from '@phosphor-icons/react'
 
 // Static registry - add new icons here
@@ -23,6 +26,9 @@ const icons = {
   'caret-down': CaretDown,
   'sign-out': SignOut,
   trash: Trash,
+  plus: Plus,
+  'clock-counter-clockwise': ClockCounterClockwise,
+  sliders: Sliders,
 } as const
 
 export type IconName = keyof typeof icons
