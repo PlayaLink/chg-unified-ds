@@ -54,6 +54,7 @@
     "react-dom": "^18.0.0 || ^19.0.0"
   },
   "dependencies": {
+    "@phosphor-icons/react": "^2.1.10",
     "react-aria-components": "^1.9.0",
     "tailwind-merge": "^3.0.0"
   },

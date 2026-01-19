@@ -1,0 +1,62 @@
+---
+alwaysApply: true
+---
+
+# Icon Usage
+
+## Import
+
+```typescript
+import { Icon, createIcon } from '@oxymormon/chg-unified-ds';
+```
+
+## Usage
+
+```tsx
+// Standalone
+<Icon name="copy" size={24} />
+<Icon name="check" className="text-red-500" />
+
+// In Button
+<Button iconLeading={({ className }) => <Icon name="copy" className={className} />}>
+  Copy
+</Button>
+
+// With createIcon helper
+const CopyIcon = createIcon('copy');
+<Button iconLeading={CopyIcon}>Copy</Button>
+```
+
+## Adding New Icons
+
+1. Find icon at [phosphoricons.com](https://phosphoricons.com)
+2. Add to `src/components/Icon/Icon.tsx`:
+   ```typescript
+   import { ArrowRight } from '@phosphor-icons/react';
+   
+   const icons = {
+     // ... existing
+     'arrow-right': ArrowRight, // PascalCase → kebab-case
+   } as const;
+   ```
+3. TypeScript auto-updates `IconName` type
+
+## Naming Convention
+
+- `ArrowRightIcon` → `arrow-right`
+- `ChevronDownIcon` → `chevron-down`
+- `SignOutIcon` → `sign-out`
+
+**Rule**: PascalCase → kebab-case, drop "Icon" suffix
+
+## Props
+
+- `name: IconName` - Required
+- `size?: number | string` - Icon size
+- `weight?: 'thin' | 'light' | 'regular' | 'bold' | 'fill' | 'duotone'` - Default: 'regular'
+- `color?: string` - Default: 'currentColor' (inherits from parent)
+- `className?: string` - Tailwind classes work via currentColor
+
+## Available Icons
+
+`copy`, `check`, `chevron-down`, `caret-down`, `sign-out`, `trash`
