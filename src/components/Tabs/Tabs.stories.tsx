@@ -48,7 +48,7 @@ const meta: Meta<typeof Tabs> = {
   },
   decorators: [
     (Story) => (
-      <div className="w-[480px]">
+      <div className="w-[800px]">
         <Story />
       </div>
     ),
@@ -64,7 +64,7 @@ type Story = StoryObj<typeof Tabs>
 
 export const Overview: Story = {
   render: () => (
-    <div className="flex w-[480px] flex-col gap-48 px-48 pb-48 pt-32">
+    <div className="flex w-[800px] flex-col gap-48 px-48 pb-48 pt-32">
       {/* Appearance */}
       <div className="flex flex-col gap-16">
         <span className="text-sm font-medium text-gray-500">Appearance</span>
@@ -126,16 +126,13 @@ export const Overview: Story = {
             />
           </div>
           <div className="flex flex-col gap-8">
-            <span className="text-xs text-gray-400">6 Tabs</span>
+            <span className="text-xs text-gray-400">Tabs with Icons</span>
             <Tabs
               appearance="underline"
               items={[
-                { id: 't1', label: 'Tab 1', content: <p>Content 1</p> },
-                { id: 't2', label: 'Tab 2', content: <p>Content 2</p> },
-                { id: 't3', label: 'Tab 3', content: <p>Content 3</p> },
-                { id: 't4', label: 'Tab 4', content: <p>Content 4</p> },
-                { id: 't5', label: 'Tab 5', content: <p>Content 5</p> },
-                { id: 't6', label: 'Tab 6', content: <p>Content 6</p> },
+                { id: 't1', label: 'New Report', icon: 'plus', content: <p>Content for New Report</p> },
+                { id: 't2', label: 'Past Reports', icon: 'clock-counter-clockwise', content: <p>Content for Past Reports</p> },
+                { id: 't3', label: 'Formatting', icon: 'sliders', content: <p>Content for Formatting</p> },
               ]}
             />
           </div>
