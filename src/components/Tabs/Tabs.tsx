@@ -48,7 +48,7 @@ export const styles = sortCx({
         selected: 'rounded-6 bg-base-white text-brand-600',
       },
     },
-    fill: 'flex-1 text-center',
+    fill: 'flex-1 justify-center text-center',
   },
   tabPanel: 'mt-16 outline-none',
 })
