@@ -14,6 +14,7 @@ import {
   TabPanel as AriaTabPanel,
 } from 'react-aria-components'
 import { cx, sortCx } from '@/utils/cx'
+import { Icon, type IconName } from '../Icon'
 
 export type TabsAppearance = 'underline' | 'block' | 'block-inverted'
 
@@ -29,9 +30,10 @@ export const styles = sortCx({
   },
   tab: {
     base: [
-      'cursor-pointer px-16 py-8 text-base font-medium outline-none transition-colors',
+      'cursor-pointer px-16 py-8 text-base font-medium outline-none transition-colors flex items-center',
       'data-[focus-visible]:outline data-[focus-visible]:outline-2 data-[focus-visible]:outline-offset-2 data-[focus-visible]:outline-brand-600',
     ].join(' '),
+    icon: 'shrink-0',
     appearances: {
       underline: {
         default: 'border-b-2 border-transparent text-gray-600 hover:text-gray-900',
@@ -56,6 +58,8 @@ export interface TabItem {
   id: string
   /** Tab label text */
   label: string
+  /** Optional icon name to display before the label */
+  icon?: IconName
   /** Tab panel content */
   content: ReactNode
 }
@@ -101,8 +105,14 @@ export function Tabs({
           <AriaTab
             key={item.id}
             id={item.id}
-            className={({ isSelected }) => getTabClassName(isSelected)}
+            className={({ isSelected }) => cx(
+              getTabClassName(isSelected),
+              item.icon && 'gap-8'
+            )}
           >
+            {item.icon && (
+              <Icon name={item.icon} className={cx(styles.tab.icon, 'size-sm')} />
+            )}
             {item.label}
           </AriaTab>
         ))}
