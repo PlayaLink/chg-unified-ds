@@ -25,22 +25,22 @@ export const styles = sortCx({
     xs: {
       root: 'gap-4 rounded-6 px-8 py-4 text-xs',
       iconOnly: 'px-4 py-4',
-      icon: 'size-[14px]',
+      icon: 'size-xs',
     },
     sm: {
       root: 'gap-6 rounded-8 px-12 py-8 text-sm',
       iconOnly: 'px-6 py-6',
-      icon: 'size-[16px]',
+      icon: 'size-sm',
     },
     md: {
       root: 'gap-8 rounded-8 px-14 py-10 text-sm',
       iconOnly: 'px-8 py-8',
-      icon: 'size-[18px]',
+      icon: 'size-md',
     },
     lg: {
       root: 'gap-8 rounded-8 px-18 py-12 text-md',
       iconOnly: 'px-10 py-10',
-      icon: 'size-[20px]',
+      icon: 'size-lg',
     },
   },
   variants: {

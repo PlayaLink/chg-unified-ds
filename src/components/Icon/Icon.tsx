@@ -33,9 +33,61 @@ const icons = {
 
 export type IconName = keyof typeof icons
 
-export interface IconProps extends Omit<PhosphorIconProps, 'ref'> {
+// Figma-defined icon sizes matching Button component
+const iconSizes = {
+  xs: 14,
+  sm: 16,
+  md: 18,
+  lg: 20,
+} as const
+
+export type IconSize = keyof typeof iconSizes | number
+
+export interface IconProps extends Omit<PhosphorIconProps, 'ref' | 'size'> {
   /** Icon name from registry */
   name: IconName
+  /** Icon size - use design system tokens (xs, sm, md, lg) or pixel value */
+  size?: IconSize
+}
+
+// Utility to extract size from Tailwind className
+function extractSizeFromClassName(className?: string | string[]): number | undefined {
+  if (!className) return undefined
+  
+  // Handle array of classes (React can pass className as array)
+  const classString = Array.isArray(className) ? className.join(' ') : className
+  
+  // Match design system size tokens: size-xs, size-sm, size-md, size-lg
+  const tokenMatch = classString.match(/\bsize-(xs|sm|md|lg)\b/)
+  if (tokenMatch) {
+    const token = tokenMatch[1] as keyof typeof iconSizes
+    return iconSizes[token]
+  }
+  
+  // Match patterns: size-[18px], w-[18px], h-[18px]
+  const arbitraryMatch = classString.match(/(?:size|w|h)-\[(\d+)px\]/)
+  if (arbitraryMatch) {
+    const size = parseInt(arbitraryMatch[1], 10)
+    return size > 0 ? size : undefined
+  }
+  
+  // Standard Tailwind sizes: w-4 = 16px, w-5 = 20px, etc.
+  // Use word boundary to avoid matching partial class names
+  const standardMatch = classString.match(/\b(?:size|w|h)-(\d+)\b/)
+  if (standardMatch) {
+    const value = parseInt(standardMatch[1], 10)
+    const size = value * 4 // Tailwind default: 1 unit = 4px
+    return size > 0 ? size : undefined
+  }
+  
+  return undefined
+}
+
+// Resolve size to pixel value
+function resolveSize(size?: IconSize): number | undefined {
+  if (size === undefined) return undefined
+  if (typeof size === 'number') return size
+  return iconSizes[size]
 }
 
 /**
@@ -52,9 +104,22 @@ export interface IconProps extends Omit<PhosphorIconProps, 'ref'> {
  * iconLeading={({ className }) => <Icon name="copy" className={className} />}
  */
 export const Icon = forwardRef<SVGSVGElement, IconProps>(
-  function Icon({ name, color = 'currentColor', weight = 'regular', ...props }, ref) {
+  function Icon({ name, color = 'currentColor', weight = 'regular', size, className, ...props }, ref) {
     const IconComponent = icons[name]
-    return <IconComponent ref={ref} color={color} weight={weight} {...props} />
+    
+    // Resolve size: explicit prop (token or number) > className extraction > default (md = 18px)
+    const resolvedSize = resolveSize(size) ?? extractSizeFromClassName(className) ?? iconSizes.md
+    
+    return (
+      <IconComponent 
+        ref={ref} 
+        color={color} 
+        weight={weight} 
+        size={resolvedSize}
+        className={className}
+        {...props} 
+      />
+    )
   },
 )
 
