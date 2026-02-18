@@ -1,38 +1,38 @@
 /* Wireframe Brand Theme - Dark Mode */
 [data-theme="wireframe"][data-mode="dark"] {
-  --color-brand-25: #333333;
-  --color-brand-50: #585858;
-  --color-brand-100: #6a6a6a;
-  --color-brand-200: #818181;
-  --color-brand-300: #969696;
+  --color-brand-25: #fafafa;
+  --color-brand-50: #f5f5f5;
+  --color-brand-100: #ebebeb;
+  --color-brand-200: #d1d1d1;
+  --color-brand-300: #bebebe;
   --color-brand-400: #aaaaaa;
-  --color-brand-500: #bebebe;
-  --color-brand-600: #d1d1d1;
-  --color-brand-700: #ebebeb;
-  --color-brand-800: #f5f5f5;
-  --color-brand-900: #fafafa;
+  --color-brand-500: #969696;
+  --color-brand-600: #818181;
+  --color-brand-700: #6a6a6a;
+  --color-brand-800: #585858;
+  --color-brand-900: #333333;
 
-  --color-primary-25: #333333;
-  --color-primary-50: #585858;
-  --color-primary-100: #6a6a6a;
-  --color-primary-200: #818181;
-  --color-primary-300: #969696;
+  --color-primary-25: #fafafa;
+  --color-primary-50: #f5f5f5;
+  --color-primary-100: #ebebeb;
+  --color-primary-200: #d1d1d1;
+  --color-primary-300: #bebebe;
   --color-primary-400: #aaaaaa;
-  --color-primary-500: #bebebe;
-  --color-primary-600: #d1d1d1;
-  --color-primary-700: #ebebeb;
-  --color-primary-800: #f5f5f5;
-  --color-primary-900: #fafafa;
+  --color-primary-500: #969696;
+  --color-primary-600: #818181;
+  --color-primary-700: #6a6a6a;
+  --color-primary-800: #585858;
+  --color-primary-900: #333333;
 
-  --color-secondary-25: #0c4a6e;
-  --color-secondary-50: #075985;
-  --color-secondary-100: #0369a1;
-  --color-secondary-200: #0284c7;
-  --color-secondary-300: #0ea5e9;
+  --color-secondary-25: #fafdff;
+  --color-secondary-50: #f0f9ff;
+  --color-secondary-100: #e0f2fe;
+  --color-secondary-200: #bae6fd;
+  --color-secondary-300: #7dd3fc;
   --color-secondary-400: #38bdf8;
-  --color-secondary-500: #7dd3fc;
-  --color-secondary-600: #bae6fd;
-  --color-secondary-700: #e0f2fe;
-  --color-secondary-800: #f0f9ff;
-  --color-secondary-900: #fafdff;
+  --color-secondary-500: #0ea5e9;
+  --color-secondary-600: #0284c7;
+  --color-secondary-700: #0369a1;
+  --color-secondary-800: #075985;
+  --color-secondary-900: #0c4a6e;
 }
