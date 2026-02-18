@@ -1,15 +1,33 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides project runtime context for `chg-unified-ds`.
 
-## Important: Do Not Modify This File
+## Project Overview
 
-**Do NOT duplicate the cursor rules into this file.** The `.cursor/rules/` directory is the single source of truth for all project guidance. This file should only point to those rules, not replicate them.
+`chg-unified-ds` is the CHG multi-brand design system package published as
+`@oxymormon/chg-unified-ds`.
 
-**When running `/init`:** Do not "improve" this file by consolidating or summarizing the cursor rules here. The current structure is intentional. If `/init` suggests creating a comprehensive CLAUDE.md with commands, architecture, etc., decline - that information already exists in `.cursor/rules/` and should not be duplicated. If you have suggestions on how to improve our documentation and rules, suggest those edits in `.cursor/rules/` directly, rather than suggest making changes to CLAUDE.md.
+## Commands
 
-## Instructions
+```bash
+npm run dev             # Storybook (localhost:6006)
+npm run build           # Build Storybook static output
+npm run build:lib       # Build package for distribution
+npm run build:tokens    # Generate CSS token outputs
+npm run build:tailwind  # Generate Tailwind config variants
+npm run validate:tokens # Validate token data
+npm run figma:publish   # Publish Figma Code Connect mappings
+```
 
-Read all files in `.cursor/rules/` directory for project-specific guidance. These rules are the authoritative source for development patterns, commands, and conventions.
+## Key Paths
 
-When updating project rules, edit the appropriate file in `.cursor/rules/` rather than this file.
+- `src/components/` design system components
+- `src/styles/` base/global style sources
+- `tokens/` token JSON inputs
+- `scripts/` token and config generation scripts
+- `dist/` package build outputs
+
+## Instruction Sources
+
+- Agent behavior/process rules are inherited from `/Users/jengland/claude/chg/AGENTS.md`.
+- Keep this file focused on build/runtime context; update rule content in `.ai-rules` sources.
