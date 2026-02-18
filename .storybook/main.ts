@@ -4,7 +4,6 @@ import { resolve, join } from 'path'
 
 const config: StorybookConfig = {
   stories: [
-    '../src/foundations/**/*.mdx',
     '../src/foundations/**/*.stories.tsx',
     '../src/components/**/*.stories.tsx',
     '../src/patterns/**/*.stories.tsx',

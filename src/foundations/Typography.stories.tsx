@@ -26,9 +26,9 @@ const TypeSpecimen = ({
   weights: { label: string; weight: number }[]
 }) => (
   <div style={{ marginBottom: '48px' }}>
-    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #e6e7eb', paddingBottom: '12px', marginBottom: '24px' }}>
-      <span style={{ fontSize: '16px', color: '#6b7380' }}>{name}</span>
-      <span style={{ fontSize: '14px', color: '#6b7380' }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--sb-border-default)', paddingBottom: '12px', marginBottom: '24px' }}>
+      <span style={{ fontSize: '16px', color: 'var(--sb-text-body)' }}>{name}</span>
+      <span style={{ fontSize: '14px', color: 'var(--sb-text-body)' }}>
         font size: {size} | Line height: {lineHeight}{letterSpacing ? ` | Letter spacing: ${letterSpacing}` : ''}
       </span>
     </div>
@@ -36,7 +36,7 @@ const TypeSpecimen = ({
       {weights.map(({ label, weight }) => (
         <div key={label} style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
           <span style={{ fontSize: size, lineHeight, fontWeight: weight, letterSpacing: letterSpacing || 'normal' }}>{name}</span>
-          <span style={{ fontSize: '16px', color: '#6b7380' }}>{label}</span>
+          <span style={{ fontSize: '16px', color: 'var(--sb-text-body)' }}>{label}</span>
         </div>
       ))}
     </div>
@@ -54,19 +54,19 @@ const BodyTypeSpecimen = ({
   lineHeight: string
   weights: { label: string; weight: number }[]
 }) => (
-  <div style={{ marginBottom: '32px', padding: '24px', backgroundColor: '#f9fafc', borderRadius: '8px', border: '1px solid #e6e7eb' }}>
+  <div style={{ marginBottom: '32px', padding: '24px', backgroundColor: 'var(--sb-surface-secondary)', borderRadius: '8px', border: '1px solid var(--sb-border-default)' }}>
     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-      <span style={{ fontSize: '14px', fontWeight: 600, padding: '4px 8px', backgroundColor: '#fff', border: '1px solid #e6e7eb', borderRadius: '4px' }}>{name}</span>
+      <span style={{ fontSize: '14px', fontWeight: 600, padding: '4px 8px', backgroundColor: 'var(--sb-surface-primary)', border: '1px solid var(--sb-border-default)', borderRadius: '4px' }}>{name}</span>
       <div style={{ display: 'flex', gap: '8px' }}>
-        <span style={{ fontSize: '14px', fontWeight: 600, padding: '4px 8px', backgroundColor: '#fff', border: '1px solid #e6e7eb', borderRadius: '4px' }}>Font Size: {size}</span>
-        <span style={{ fontSize: '14px', fontWeight: 600, padding: '4px 8px', backgroundColor: '#fff', border: '1px solid #e6e7eb', borderRadius: '4px' }}>Line Height: {lineHeight}</span>
+        <span style={{ fontSize: '14px', fontWeight: 600, padding: '4px 8px', backgroundColor: 'var(--sb-surface-primary)', border: '1px solid var(--sb-border-default)', borderRadius: '4px' }}>Font Size: {size}</span>
+        <span style={{ fontSize: '14px', fontWeight: 600, padding: '4px 8px', backgroundColor: 'var(--sb-surface-primary)', border: '1px solid var(--sb-border-default)', borderRadius: '4px' }}>Line Height: {lineHeight}</span>
       </div>
     </div>
-    <div style={{ borderTop: '1px solid #e6e7eb', paddingTop: '16px', display: 'flex', gap: '48px', flexWrap: 'wrap' }}>
+    <div style={{ borderTop: '1px solid var(--sb-border-default)', paddingTop: '16px', display: 'flex', gap: '48px', flexWrap: 'wrap' }}>
       {weights.map(({ label, weight }) => (
         <div key={label} style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
           <span style={{ fontSize: size, lineHeight, fontWeight: weight }}>{name}</span>
-          <span style={{ fontSize: '16px', color: '#6b7380' }}>{label}</span>
+          <span style={{ fontSize: '16px', color: 'var(--sb-text-body)' }}>{label}</span>
         </div>
       ))}
     </div>
@@ -86,10 +86,10 @@ export const Overview: Story = {
     <div style={{ padding: '40px 48px 48px' }}>
       {/* Header */}
       <div style={{ marginBottom: '48px' }}>
-        <h1 style={{ fontSize: '48px', fontWeight: 500, color: '#181d27', marginBottom: '12px' }}>
+        <h1 style={{ fontSize: '48px', fontWeight: 500, color: 'var(--sb-text-heading)', marginBottom: '12px' }}>
           Typography
         </h1>
-        <p style={{ fontSize: '18px', color: '#6b7380', maxWidth: '720px', lineHeight: 1.5 }}>
+        <p style={{ fontSize: '18px', color: 'var(--sb-text-body)', maxWidth: '720px', lineHeight: 1.5 }}>
           Typography is the foundation of clear, consistent communication, ensuring readability and
           visual hierarchy. Our scalable font sizes, weights, and line heights adapt seamlessly
           across screens and devices.
@@ -105,7 +105,7 @@ export const Overview: Story = {
               <span style={{ fontSize: '48px', fontWeight: 400 }}>Inter</span>
             </div>
             <span style={{ fontSize: '128px', fontWeight: 700, lineHeight: 1 }}>Ag</span>
-            <div style={{ marginTop: '24px', fontSize: '48px', fontWeight: 400, color: '#181d27', wordBreak: 'break-all' }}>
+            <div style={{ marginTop: '24px', fontSize: '48px', fontWeight: 400, color: 'var(--sb-text-heading)', wordBreak: 'break-all' }}>
               ABCDEFGHIJKLMNOPQRSTUVWXYZ
               <br />
               abcdefghijklmnopqrstuvwxyz
@@ -121,7 +121,7 @@ export const Overview: Story = {
                 <span style={{ fontSize: '60px', fontWeight: weight, display: 'block', marginBottom: '8px' }}>Aa</span>
                 <span style={{ fontSize: '20px', fontWeight: 700 }}>{label}</span>
                 <br />
-                <span style={{ fontSize: '20px', color: '#6b7380' }}>Font weight: {weight}</span>
+                <span style={{ fontSize: '20px', color: 'var(--sb-text-body)' }}>Font weight: {weight}</span>
               </div>
             ))}
           </div>
@@ -159,10 +159,10 @@ export const DisplayFonts: Story = {
     <div style={{ padding: '40px 48px 48px' }}>
       {/* Header */}
       <div style={{ marginBottom: '48px' }}>
-        <h1 style={{ fontSize: '48px', fontWeight: 500, color: '#181d27', marginBottom: '12px' }}>
+        <h1 style={{ fontSize: '48px', fontWeight: 500, color: 'var(--sb-text-heading)', marginBottom: '12px' }}>
           Display Fonts
         </h1>
-        <p style={{ fontSize: '18px', color: '#6b7380', maxWidth: '720px', lineHeight: 1.5 }}>
+        <p style={{ fontSize: '18px', color: 'var(--sb-text-body)', maxWidth: '720px', lineHeight: 1.5 }}>
           Display Fonts are designed for large-scale use in headlines, banners, and attention-grabbing
           text. They emphasize visual impact with bold styling, unique characteristics, and strong
           readability at large sizes.
@@ -186,10 +186,10 @@ export const FoundationalTypography: Story = {
     <div style={{ padding: '40px 48px 48px' }}>
       {/* Header */}
       <div style={{ marginBottom: '48px' }}>
-        <h1 style={{ fontSize: '48px', fontWeight: 500, color: '#181d27', marginBottom: '12px' }}>
+        <h1 style={{ fontSize: '48px', fontWeight: 500, color: 'var(--sb-text-heading)', marginBottom: '12px' }}>
           Foundational Typography
         </h1>
-        <p style={{ fontSize: '18px', color: '#6b7380', maxWidth: '720px', lineHeight: 1.5 }}>
+        <p style={{ fontSize: '18px', color: 'var(--sb-text-body)', maxWidth: '720px', lineHeight: 1.5 }}>
           Foundational typography styles are used for body copy, labels, and UI text. These sizes
           ensure readability and consistency across components and layouts.
         </p>
@@ -226,10 +226,10 @@ export const TypeShowcase: Story = {
     <div style={{ padding: '40px 48px 48px' }}>
       {/* Header */}
       <div style={{ marginBottom: '48px' }}>
-        <h1 style={{ fontSize: '48px', fontWeight: 500, color: '#181d27', marginBottom: '12px' }}>
+        <h1 style={{ fontSize: '48px', fontWeight: 500, color: 'var(--sb-text-heading)', marginBottom: '12px' }}>
           Type Showcase
         </h1>
-        <p style={{ fontSize: '18px', color: '#6b7380', maxWidth: '720px', lineHeight: 1.5 }}>
+        <p style={{ fontSize: '18px', color: 'var(--sb-text-body)', maxWidth: '720px', lineHeight: 1.5 }}>
           See our typography system in action. This showcase demonstrates how different type styles
           work together to create clear visual hierarchy and readable content.
         </p>
@@ -238,12 +238,12 @@ export const TypeShowcase: Story = {
       {/* Article Example */}
       <div style={{ maxWidth: '800px', marginBottom: '64px' }}>
         <h2 style={{ fontSize: '24px', fontWeight: 500, marginBottom: '24px' }}>Article Layout</h2>
-        <div style={{ padding: '48px', backgroundColor: '#f9fafc', borderRadius: '8px' }}>
-          <span style={{ fontSize: '14px', fontWeight: 600, color: '#6b7380', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Featured Article</span>
+        <div style={{ padding: '48px', backgroundColor: 'var(--sb-surface-secondary)', borderRadius: '8px' }}>
+          <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--sb-text-body)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Featured Article</span>
           <h3 style={{ fontSize: '48px', fontWeight: 600, lineHeight: 1.25, letterSpacing: '-0.02em', marginTop: '16px', marginBottom: '24px' }}>
             The Future of Design Systems
           </h3>
-          <p style={{ fontSize: '20px', color: '#6b7380', lineHeight: 1.5, marginBottom: '32px' }}>
+          <p style={{ fontSize: '20px', color: 'var(--sb-text-body)', lineHeight: 1.5, marginBottom: '32px' }}>
             How modern teams are building scalable, consistent user experiences through systematic design approaches.
           </p>
           <p style={{ fontSize: '16px', lineHeight: 1.75, marginBottom: '24px' }}>
@@ -260,17 +260,17 @@ export const TypeShowcase: Story = {
         <h2 style={{ fontSize: '24px', fontWeight: 500, marginBottom: '24px' }}>UI Components</h2>
         <div style={{ display: 'flex', gap: '24px' }}>
           {/* Card 1 */}
-          <div style={{ flex: 1, padding: '24px', backgroundColor: '#fff', borderRadius: '8px', border: '1px solid #e6e7eb' }}>
+          <div style={{ flex: 1, padding: '24px', backgroundColor: 'var(--sb-surface-primary)', borderRadius: '8px', border: '1px solid var(--sb-border-default)' }}>
             <h4 style={{ fontSize: '18px', fontWeight: 600, marginBottom: '8px' }}>Card Title</h4>
-            <p style={{ fontSize: '14px', color: '#6b7380', lineHeight: 1.5, marginBottom: '16px' }}>
+            <p style={{ fontSize: '14px', color: 'var(--sb-text-body)', lineHeight: 1.5, marginBottom: '16px' }}>
               This is a description that demonstrates body text styling within a card component.
             </p>
             <span style={{ fontSize: '12px', fontWeight: 500, color: 'var(--color-brand-600)' }}>Learn more</span>
           </div>
           {/* Card 2 */}
-          <div style={{ flex: 1, padding: '24px', backgroundColor: '#fff', borderRadius: '8px', border: '1px solid #e6e7eb' }}>
+          <div style={{ flex: 1, padding: '24px', backgroundColor: 'var(--sb-surface-primary)', borderRadius: '8px', border: '1px solid var(--sb-border-default)' }}>
             <h4 style={{ fontSize: '18px', fontWeight: 600, marginBottom: '8px' }}>Another Card</h4>
-            <p style={{ fontSize: '14px', color: '#6b7380', lineHeight: 1.5, marginBottom: '16px' }}>
+            <p style={{ fontSize: '14px', color: 'var(--sb-text-body)', lineHeight: 1.5, marginBottom: '16px' }}>
               Consistent typography creates cohesive interfaces that users can navigate intuitively.
             </p>
             <span style={{ fontSize: '12px', fontWeight: 500, color: 'var(--color-brand-600)' }}>View details</span>
@@ -281,20 +281,20 @@ export const TypeShowcase: Story = {
       {/* Data Table Example */}
       <div style={{ maxWidth: '800px' }}>
         <h2 style={{ fontSize: '24px', fontWeight: 500, marginBottom: '24px' }}>Data Display</h2>
-        <div style={{ backgroundColor: '#fff', borderRadius: '8px', border: '1px solid #e6e7eb', overflow: 'hidden' }}>
-          <div style={{ display: 'flex', padding: '12px 24px', backgroundColor: '#f9fafc', borderBottom: '1px solid #e6e7eb' }}>
-            <span style={{ flex: 1, fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#6b7380' }}>Name</span>
-            <span style={{ flex: 1, fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#6b7380' }}>Role</span>
-            <span style={{ flex: 1, fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#6b7380' }}>Status</span>
+        <div style={{ backgroundColor: 'var(--sb-surface-primary)', borderRadius: '8px', border: '1px solid var(--sb-border-default)', overflow: 'hidden' }}>
+          <div style={{ display: 'flex', padding: '12px 24px', backgroundColor: 'var(--sb-surface-secondary)', borderBottom: '1px solid var(--sb-border-default)' }}>
+            <span style={{ flex: 1, fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: 'var(--sb-text-body)' }}>Name</span>
+            <span style={{ flex: 1, fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: 'var(--sb-text-body)' }}>Role</span>
+            <span style={{ flex: 1, fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: 'var(--sb-text-body)' }}>Status</span>
           </div>
           {[
             { name: 'Sarah Johnson', role: 'Designer', status: 'Active' },
             { name: 'Michael Chen', role: 'Developer', status: 'Active' },
             { name: 'Emily Davis', role: 'Product Manager', status: 'Away' },
           ].map((row, i) => (
-            <div key={i} style={{ display: 'flex', padding: '16px 24px', borderBottom: i < 2 ? '1px solid #e6e7eb' : 'none' }}>
+            <div key={i} style={{ display: 'flex', padding: '16px 24px', borderBottom: i < 2 ? '1px solid var(--sb-border-default)' : 'none' }}>
               <span style={{ flex: 1, fontSize: '14px', fontWeight: 500 }}>{row.name}</span>
-              <span style={{ flex: 1, fontSize: '14px', color: '#6b7380' }}>{row.role}</span>
+              <span style={{ flex: 1, fontSize: '14px', color: 'var(--sb-text-body)' }}>{row.role}</span>
               <span style={{ flex: 1, fontSize: '14px', color: row.status === 'Active' ? '#17a34a' : '#6b7380' }}>{row.status}</span>
             </div>
           ))}

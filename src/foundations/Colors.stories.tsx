@@ -27,11 +27,11 @@ const Swatch = ({
         height: '56px',
         backgroundColor: variable ? `var(${variable})` : value,
         borderRadius: '8px',
-        border: name === '25' || name === '50' || name === 'White' ? '1px solid #e9eaeb' : 'none',
+        border: name === '25' || name === '50' || name === 'White' ? '1px solid var(--sb-border-light)' : 'none',
       }}
     />
-    <span style={{ fontSize: '12px', color: '#535862' }}>{name}</span>
-    <code style={{ fontSize: '10px', color: '#717680' }}>{variable || value}</code>
+    <span style={{ fontSize: '12px', color: 'var(--sb-text-secondary)' }}>{name}</span>
+    <code style={{ fontSize: '10px', color: 'var(--sb-text-muted)' }}>{variable || value}</code>
   </div>
 )
 
@@ -46,9 +46,9 @@ const ColorScale = ({
   colors: { name: string; value?: string; variable?: string }[]
 }) => (
   <div style={{ marginBottom: '48px' }}>
-    <h3 style={{ fontSize: '16px', fontWeight: 600, color: '#181d27', marginBottom: '8px' }}>{title}</h3>
+    <h3 style={{ fontSize: '16px', fontWeight: 600, color: 'var(--sb-text-heading)', marginBottom: '8px' }}>{title}</h3>
     {description && (
-      <p style={{ fontSize: '16px', color: '#6b7380', marginBottom: '24px', lineHeight: 1.5 }}>{description}</p>
+      <p style={{ fontSize: '16px', color: 'var(--sb-text-body)', marginBottom: '24px', lineHeight: 1.5 }}>{description}</p>
     )}
     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
       {colors.map((color) => (
@@ -63,10 +63,10 @@ export const Overview: Story = {
     <div style={{ padding: '40px 48px 48px' }}>
       {/* Header */}
       <div style={{ marginBottom: '48px' }}>
-        <h1 style={{ fontSize: '48px', fontWeight: 500, color: '#181d27', marginBottom: '12px' }}>
+        <h1 style={{ fontSize: '48px', fontWeight: 500, color: 'var(--sb-text-heading)', marginBottom: '12px' }}>
           Colors
         </h1>
-        <p style={{ fontSize: '18px', color: '#6b7380', maxWidth: '720px', lineHeight: 1.5 }}>
+        <p style={{ fontSize: '18px', color: 'var(--sb-text-body)', maxWidth: '720px', lineHeight: 1.5 }}>
           Our design system provides purposeful color styles as a strong foundation for any brand or
           project. With WCAG 2.2 contrast ratios built in, you can ensure accessibility and text
           legibility.
@@ -75,10 +75,10 @@ export const Overview: Story = {
 
       {/* Foundation colors section */}
       <div style={{ marginBottom: '48px' }}>
-        <h2 style={{ fontSize: '24px', fontWeight: 500, color: '#181d27', marginBottom: '8px' }}>
+        <h2 style={{ fontSize: '24px', fontWeight: 500, color: 'var(--sb-text-heading)', marginBottom: '8px' }}>
           Foundation colors
         </h2>
-        <p style={{ fontSize: '20px', color: '#6b7380', maxWidth: '800px', lineHeight: 1.5 }}>
+        <p style={{ fontSize: '20px', color: 'var(--sb-text-body)', maxWidth: '800px', lineHeight: 1.5 }}>
           Foundation colors are the core set of colors in a design system that serve as the base for
           all other color applications. These colors are carefully selected to provide a strong,
           flexible foundation for branding, UI components, and accessibility.
@@ -231,15 +231,15 @@ export const Overview: Story = {
 
       {/* Usage */}
       <div style={{ marginTop: '48px' }}>
-        <h2 style={{ fontSize: '24px', fontWeight: 500, color: '#181d27', marginBottom: '16px' }}>
+        <h2 style={{ fontSize: '24px', fontWeight: 500, color: 'var(--sb-text-heading)', marginBottom: '16px' }}>
           Usage
         </h2>
-        <p style={{ fontSize: '14px', color: '#535862', marginBottom: '16px' }}>
+        <p style={{ fontSize: '14px', color: 'var(--sb-text-secondary)', marginBottom: '16px' }}>
           Colors are available as Tailwind classes:
         </p>
         <pre
           style={{
-            backgroundColor: '#f9fafc',
+            backgroundColor: 'var(--sb-surface-secondary)',
             padding: '16px',
             borderRadius: '8px',
             fontSize: '13px',

@@ -10,6 +10,9 @@ import './themes/connect.css'
 import './themes/locumsmart.css'
 import './themes/wireframe.css'
 
+// Storybook story theming (light/dark mode adaptation)
+import './story-theme.css'
+
 // Import all brand theme CSS variables (dark mode)
 import './themes/weatherby-dark.css'
 import './themes/comphealth-dark.css'
@@ -78,6 +81,8 @@ const preview: Preview = {
         // Apply theme and color mode to document root
         document.documentElement.setAttribute('data-theme', theme)
         document.documentElement.setAttribute('data-mode', colorMode)
+        document.body.style.backgroundColor = colorMode === 'dark' ? 'var(--uds-surface-primary)' : ''
+        document.body.style.color = colorMode === 'dark' ? 'var(--uds-text-primary)' : ''
       }, [theme, colorMode])
 
       return (

@@ -60,8 +60,8 @@ const ShadowCard = ({
     style={{
       width: '240px',
       height: '240px',
-      backgroundColor: '#f3f4f6',
-      border: '1px solid #9ca2ae',
+      backgroundColor: 'var(--sb-surface-tertiary)',
+      border: '1px solid var(--sb-border-default)',
       borderRadius: '12px',
       boxShadow: value,
       display: 'flex',
@@ -69,7 +69,7 @@ const ShadowCard = ({
       padding: '20px',
     }}
   >
-    <span style={{ fontSize: '18px', color: '#000' }}>{name}</span>
+    <span style={{ fontSize: '18px', color: 'var(--sb-text-strong)' }}>{name}</span>
   </div>
 )
 
@@ -78,10 +78,10 @@ export const Overview: Story = {
     <div style={{ padding: '40px 48px 48px' }}>
       {/* Header */}
       <div style={{ marginBottom: '48px' }}>
-        <h1 style={{ fontSize: '48px', fontWeight: 500, color: '#181d27', marginBottom: '12px' }}>
+        <h1 style={{ fontSize: '48px', fontWeight: 500, color: 'var(--sb-text-heading)', marginBottom: '12px' }}>
           Shadows
         </h1>
-        <p style={{ fontSize: '18px', color: '#6b7380', maxWidth: '720px', lineHeight: 1.5 }}>
+        <p style={{ fontSize: '18px', color: 'var(--sb-text-body)', maxWidth: '720px', lineHeight: 1.5 }}>
           Shadows enhance depth and realism in designs by creating a sense of hierarchy and spatial
           positioning along the z-axis. They help differentiate elements, improve legibility, and
           add a subtle layer of visual interest, making interfaces feel more dynamic and lifelike.
@@ -97,14 +97,14 @@ export const Overview: Story = {
 
       {/* Token Reference */}
       <div style={{ marginBottom: '48px' }}>
-        <h2 style={{ fontSize: '24px', fontWeight: 500, color: '#181d27', marginBottom: '24px' }}>
+        <h2 style={{ fontSize: '24px', fontWeight: 500, color: 'var(--sb-text-heading)', marginBottom: '24px' }}>
           Token Reference
         </h2>
-        <div style={{ backgroundColor: '#f9fafc', borderRadius: '8px', overflow: 'hidden', border: '1px solid #e6e7eb' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '150px 1fr 1fr', padding: '12px 24px', backgroundColor: '#f3f4f6', borderBottom: '1px solid #e6e7eb' }}>
-            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#6b7380' }}>Token</span>
-            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#6b7380' }}>Value</span>
-            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#6b7380' }}>Usage</span>
+        <div style={{ backgroundColor: 'var(--sb-surface-secondary)', borderRadius: '8px', overflow: 'hidden', border: '1px solid var(--sb-border-default)' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '150px 1fr 1fr', padding: '12px 24px', backgroundColor: 'var(--sb-surface-tertiary)', borderBottom: '1px solid var(--sb-border-default)' }}>
+            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: 'var(--sb-text-body)' }}>Token</span>
+            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: 'var(--sb-text-body)' }}>Value</span>
+            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: 'var(--sb-text-body)' }}>Usage</span>
           </div>
           {shadows.map((shadow, i) => (
             <div
@@ -113,12 +113,12 @@ export const Overview: Story = {
                 display: 'grid',
                 gridTemplateColumns: '150px 1fr 1fr',
                 padding: '16px 24px',
-                borderBottom: i < shadows.length - 1 ? '1px solid #e6e7eb' : 'none',
+                borderBottom: i < shadows.length - 1 ? '1px solid var(--sb-border-default)' : 'none',
               }}
             >
               <code style={{ fontSize: '14px', fontWeight: 500 }}>{shadow.name}</code>
-              <code style={{ fontSize: '12px', color: '#6b7380', wordBreak: 'break-all' }}>{shadow.value}</code>
-              <span style={{ fontSize: '14px', color: '#6b7380' }}>{shadow.description}</span>
+              <code style={{ fontSize: '12px', color: 'var(--sb-text-body)', wordBreak: 'break-all' }}>{shadow.value}</code>
+              <span style={{ fontSize: '14px', color: 'var(--sb-text-body)' }}>{shadow.description}</span>
             </div>
           ))}
         </div>
@@ -126,15 +126,15 @@ export const Overview: Story = {
 
       {/* Usage */}
       <div>
-        <h2 style={{ fontSize: '24px', fontWeight: 500, color: '#181d27', marginBottom: '16px' }}>
+        <h2 style={{ fontSize: '24px', fontWeight: 500, color: 'var(--sb-text-heading)', marginBottom: '16px' }}>
           Usage
         </h2>
-        <p style={{ fontSize: '14px', color: '#535862', marginBottom: '16px' }}>
+        <p style={{ fontSize: '14px', color: 'var(--sb-text-secondary)', marginBottom: '16px' }}>
           Shadows are available as Tailwind classes:
         </p>
         <pre
           style={{
-            backgroundColor: '#f9fafc',
+            backgroundColor: 'var(--sb-surface-secondary)',
             padding: '16px',
             borderRadius: '8px',
             fontSize: '13px',

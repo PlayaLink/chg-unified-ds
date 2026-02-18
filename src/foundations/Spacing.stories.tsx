@@ -49,11 +49,11 @@ const SpacingBar = ({ name, value, pixels }: { name: string; value: string; pixe
       gridTemplateColumns: '120px 60px 1fr',
       alignItems: 'center',
       padding: '12px 0',
-      borderBottom: '1px solid #e6e7eb',
+      borderBottom: '1px solid var(--sb-border-default)',
     }}
   >
     <code style={{ fontSize: '14px', fontWeight: 500 }}>{name}</code>
-    <span style={{ fontSize: '14px', color: '#6b7380' }}>{value}</span>
+    <span style={{ fontSize: '14px', color: 'var(--sb-text-body)' }}>{value}</span>
     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
       <div
         style={{
@@ -66,7 +66,7 @@ const SpacingBar = ({ name, value, pixels }: { name: string; value: string; pixe
         }}
       />
       {pixels > 0 && (
-        <span style={{ fontSize: '12px', color: '#9ca2ae' }}>{pixels}px</span>
+        <span style={{ fontSize: '12px', color: 'var(--sb-text-dim)' }}>{pixels}px</span>
       )}
     </div>
   </div>
@@ -77,10 +77,10 @@ export const Overview: Story = {
     <div style={{ padding: '40px 48px 48px' }}>
       {/* Header */}
       <div style={{ marginBottom: '48px' }}>
-        <h1 style={{ fontSize: '48px', fontWeight: 500, color: '#181d27', marginBottom: '12px' }}>
+        <h1 style={{ fontSize: '48px', fontWeight: 500, color: 'var(--sb-text-heading)', marginBottom: '12px' }}>
           Spacing
         </h1>
-        <p style={{ fontSize: '18px', color: '#6b7380', maxWidth: '720px', lineHeight: 1.5 }}>
+        <p style={{ fontSize: '18px', color: 'var(--sb-text-body)', maxWidth: '720px', lineHeight: 1.5 }}>
           Just like your color scale, working from a defined spacing system allows you to work faster
           and more consistently. Consistent and scalable spacing helps you eliminate guesswork whilst
           designing and developing because you are designing with a limited set of options.
@@ -89,10 +89,10 @@ export const Overview: Story = {
 
       {/* Base Unit */}
       <div style={{ marginBottom: '48px' }}>
-        <h2 style={{ fontSize: '24px', fontWeight: 500, color: '#181d27', marginBottom: '16px' }}>
+        <h2 style={{ fontSize: '24px', fontWeight: 500, color: 'var(--sb-text-heading)', marginBottom: '16px' }}>
           4px Base Unit
         </h2>
-        <p style={{ fontSize: '16px', color: '#6b7380', maxWidth: '720px', lineHeight: 1.5, marginBottom: '24px' }}>
+        <p style={{ fontSize: '16px', color: 'var(--sb-text-body)', maxWidth: '720px', lineHeight: 1.5, marginBottom: '24px' }}>
           Our spacing system is built on a 4px base unit. This creates a consistent rhythm throughout
           the interface while allowing for fine-grained control when needed. The scale includes both
           4px increments and select intermediate values for flexibility.
@@ -102,9 +102,9 @@ export const Overview: Story = {
             display: 'flex',
             gap: '4px',
             padding: '24px',
-            backgroundColor: '#f9fafc',
+            backgroundColor: 'var(--sb-surface-secondary)',
             borderRadius: '8px',
-            border: '1px solid #e6e7eb',
+            border: '1px solid var(--sb-border-default)',
           }}
         >
           {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
@@ -118,7 +118,7 @@ export const Overview: Story = {
               }}
             />
           ))}
-          <span style={{ marginLeft: '12px', fontSize: '14px', color: '#6b7380', alignSelf: 'center' }}>
+          <span style={{ marginLeft: '12px', fontSize: '14px', color: 'var(--sb-text-body)', alignSelf: 'center' }}>
             = 32px (8 x 4px base unit)
           </span>
         </div>
@@ -126,15 +126,15 @@ export const Overview: Story = {
 
       {/* Spacing Scale */}
       <div style={{ marginBottom: '48px' }}>
-        <h2 style={{ fontSize: '24px', fontWeight: 500, color: '#181d27', marginBottom: '24px' }}>
+        <h2 style={{ fontSize: '24px', fontWeight: 500, color: 'var(--sb-text-heading)', marginBottom: '24px' }}>
           Spacing Scale
         </h2>
         <div
           style={{
-            backgroundColor: '#f9fafc',
+            backgroundColor: 'var(--sb-surface-secondary)',
             borderRadius: '8px',
             overflow: 'hidden',
-            border: '1px solid #e6e7eb',
+            border: '1px solid var(--sb-border-default)',
           }}
         >
           <div
@@ -142,17 +142,17 @@ export const Overview: Story = {
               display: 'grid',
               gridTemplateColumns: '120px 60px 1fr',
               padding: '12px 24px',
-              backgroundColor: '#f3f4f6',
-              borderBottom: '1px solid #e6e7eb',
+              backgroundColor: 'var(--sb-surface-tertiary)',
+              borderBottom: '1px solid var(--sb-border-default)',
             }}
           >
-            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#6b7380' }}>
+            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: 'var(--sb-text-body)' }}>
               Token
             </span>
-            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#6b7380' }}>
+            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: 'var(--sb-text-body)' }}>
               Value
             </span>
-            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#6b7380' }}>
+            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: 'var(--sb-text-body)' }}>
               Visual
             </span>
           </div>
@@ -166,20 +166,20 @@ export const Overview: Story = {
 
       {/* Screens */}
       <div style={{ marginBottom: '48px' }}>
-        <h2 style={{ fontSize: '24px', fontWeight: 500, color: '#181d27', marginBottom: '16px' }}>
+        <h2 style={{ fontSize: '24px', fontWeight: 500, color: 'var(--sb-text-heading)', marginBottom: '16px' }}>
           Screens
         </h2>
-        <p style={{ fontSize: '16px', color: '#6b7380', maxWidth: '720px', lineHeight: 1.5, marginBottom: '24px' }}>
+        <p style={{ fontSize: '16px', color: 'var(--sb-text-body)', maxWidth: '720px', lineHeight: 1.5, marginBottom: '24px' }}>
           Working from a pre-defined and limited spacing system for wrapping content allows you to work
           faster and consistently. These pre-defined widths are derived from the primitive spacing values
           and are useful for defining max widths for sections such as text content and page headings.
         </p>
         <div
           style={{
-            backgroundColor: '#f9fafc',
+            backgroundColor: 'var(--sb-surface-secondary)',
             borderRadius: '8px',
             overflow: 'hidden',
-            border: '1px solid #e6e7eb',
+            border: '1px solid var(--sb-border-default)',
           }}
         >
           <div
@@ -187,17 +187,17 @@ export const Overview: Story = {
               display: 'grid',
               gridTemplateColumns: '180px 80px 1fr',
               padding: '12px 24px',
-              backgroundColor: '#f3f4f6',
-              borderBottom: '1px solid #e6e7eb',
+              backgroundColor: 'var(--sb-surface-tertiary)',
+              borderBottom: '1px solid var(--sb-border-default)',
             }}
           >
-            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#6b7380' }}>
+            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: 'var(--sb-text-body)' }}>
               Token
             </span>
-            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#6b7380' }}>
+            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: 'var(--sb-text-body)' }}>
               Value
             </span>
-            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#6b7380' }}>
+            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: 'var(--sb-text-body)' }}>
               Visual
             </span>
           </div>
@@ -210,11 +210,11 @@ export const Overview: Story = {
                   gridTemplateColumns: '180px 80px 1fr',
                   alignItems: 'center',
                   padding: '12px 0',
-                  borderBottom: '1px solid #e6e7eb',
+                  borderBottom: '1px solid var(--sb-border-default)',
                 }}
               >
                 <code style={{ fontSize: '14px', fontWeight: 500 }}>{token.name}</code>
-                <span style={{ fontSize: '14px', color: '#6b7380' }}>{token.value}</span>
+                <span style={{ fontSize: '14px', color: 'var(--sb-text-body)' }}>{token.value}</span>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                   <div
                     style={{
@@ -233,20 +233,20 @@ export const Overview: Story = {
 
       {/* Paragraph (Line Widths) */}
       <div style={{ marginBottom: '48px' }}>
-        <h2 style={{ fontSize: '24px', fontWeight: 500, color: '#181d27', marginBottom: '16px' }}>
+        <h2 style={{ fontSize: '24px', fontWeight: 500, color: 'var(--sb-text-heading)', marginBottom: '16px' }}>
           Paragraph (Line Widths)
         </h2>
-        <p style={{ fontSize: '16px', color: '#6b7380', maxWidth: '720px', lineHeight: 1.5, marginBottom: '24px' }}>
+        <p style={{ fontSize: '16px', color: 'var(--sb-text-body)', maxWidth: '720px', lineHeight: 1.5, marginBottom: '24px' }}>
           Similar to the container variables above, paragraph text such as blog post content have a
           max-width defined as a separate variable. This ensures all paragraph line lengths are optimized
           for readability and also allows you to change this max width across your designs in a few clicks.
         </p>
         <div
           style={{
-            backgroundColor: '#f9fafc',
+            backgroundColor: 'var(--sb-surface-secondary)',
             borderRadius: '8px',
             overflow: 'hidden',
-            border: '1px solid #e6e7eb',
+            border: '1px solid var(--sb-border-default)',
           }}
         >
           <div
@@ -254,17 +254,17 @@ export const Overview: Story = {
               display: 'grid',
               gridTemplateColumns: '180px 80px 1fr',
               padding: '12px 24px',
-              backgroundColor: '#f3f4f6',
-              borderBottom: '1px solid #e6e7eb',
+              backgroundColor: 'var(--sb-surface-tertiary)',
+              borderBottom: '1px solid var(--sb-border-default)',
             }}
           >
-            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#6b7380' }}>
+            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: 'var(--sb-text-body)' }}>
               Token
             </span>
-            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#6b7380' }}>
+            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: 'var(--sb-text-body)' }}>
               Value
             </span>
-            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#6b7380' }}>
+            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: 'var(--sb-text-body)' }}>
               Visual
             </span>
           </div>
@@ -277,11 +277,11 @@ export const Overview: Story = {
                   gridTemplateColumns: '180px 80px 1fr',
                   alignItems: 'center',
                   padding: '12px 0',
-                  borderBottom: '1px solid #e6e7eb',
+                  borderBottom: '1px solid var(--sb-border-default)',
                 }}
               >
                 <code style={{ fontSize: '14px', fontWeight: 500 }}>{token.name}</code>
-                <span style={{ fontSize: '14px', color: '#6b7380' }}>{token.value}</span>
+                <span style={{ fontSize: '14px', color: 'var(--sb-text-body)' }}>{token.value}</span>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                   <div
                     style={{
@@ -300,15 +300,15 @@ export const Overview: Story = {
 
       {/* Usage */}
       <div>
-        <h2 style={{ fontSize: '24px', fontWeight: 500, color: '#181d27', marginBottom: '16px' }}>
+        <h2 style={{ fontSize: '24px', fontWeight: 500, color: 'var(--sb-text-heading)', marginBottom: '16px' }}>
           Usage
         </h2>
-        <p style={{ fontSize: '14px', color: '#535862', marginBottom: '16px' }}>
+        <p style={{ fontSize: '14px', color: 'var(--sb-text-secondary)', marginBottom: '16px' }}>
           Spacing tokens are available as Tailwind classes. Note that our spacing scale uses pixel values directly, not the default Tailwind 4x multiplier:
         </p>
         <pre
           style={{
-            backgroundColor: '#f9fafc',
+            backgroundColor: 'var(--sb-surface-secondary)',
             padding: '16px',
             borderRadius: '8px',
             fontSize: '13px',

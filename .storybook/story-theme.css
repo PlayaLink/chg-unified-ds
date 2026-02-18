@@ -1,0 +1,30 @@
+/* Storybook story theming — adapts foundation stories to light/dark mode */
+
+[data-mode="light"],
+:root {
+  --sb-text-heading: #181d27;
+  --sb-text-body: #6b7380;
+  --sb-text-secondary: #535862;
+  --sb-text-muted: #717680;
+  --sb-text-dim: #9ca2ae;
+  --sb-text-strong: #000;
+  --sb-surface-primary: #fff;
+  --sb-surface-secondary: #f9fafc;
+  --sb-surface-tertiary: #f3f4f6;
+  --sb-border-default: #e6e7eb;
+  --sb-border-light: #e9eaeb;
+}
+
+[data-mode="dark"] {
+  --sb-text-heading: #f3f4f6;
+  --sb-text-body: #9ca2ae;
+  --sb-text-secondary: #9ca2ae;
+  --sb-text-muted: #6b7380;
+  --sb-text-dim: #6b7380;
+  --sb-text-strong: #f3f4f6;
+  --sb-surface-primary: #202938;
+  --sb-surface-secondary: #202938;
+  --sb-surface-tertiary: #111828;
+  --sb-border-default: #384152;
+  --sb-border-light: #384152;
+}

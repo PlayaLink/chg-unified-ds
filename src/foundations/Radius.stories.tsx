@@ -29,15 +29,15 @@ const RadiusCard = ({ name, pixels }: { name: string; pixels: number }) => (
     style={{
       width: '240px',
       height: '240px',
-      backgroundColor: '#f3f4f6',
-      border: '1px solid #6b7380',
+      backgroundColor: 'var(--sb-surface-tertiary)',
+      border: '1px solid var(--sb-border-default)',
       borderRadius: pixels === 9999 ? '9999px' : `${pixels}px`,
       display: 'flex',
       alignItems: 'flex-start',
       padding: '20px',
     }}
   >
-    <span style={{ fontSize: '18px', fontWeight: 600, color: '#000' }}>{name}</span>
+    <span style={{ fontSize: '18px', fontWeight: 600, color: 'var(--sb-text-strong)' }}>{name}</span>
   </div>
 )
 
@@ -46,10 +46,10 @@ export const Overview: Story = {
     <div style={{ padding: '40px 48px 48px' }}>
       {/* Header */}
       <div style={{ marginBottom: '48px' }}>
-        <h1 style={{ fontSize: '48px', fontWeight: 500, color: '#181d27', marginBottom: '12px' }}>
+        <h1 style={{ fontSize: '48px', fontWeight: 500, color: 'var(--sb-text-heading)', marginBottom: '12px' }}>
           Radius
         </h1>
-        <p style={{ fontSize: '18px', color: '#6b7380', maxWidth: '720px', lineHeight: 1.5 }}>
+        <p style={{ fontSize: '18px', color: 'var(--sb-text-body)', maxWidth: '720px', lineHeight: 1.5 }}>
           Use border radius values to quickly style the border-radius of an element. Border radius
           values are useful for rounding edges of images, buttons, or any other element. Just like
           pre-defined spacing values, working from a defined border radius system allows you to work
@@ -66,20 +66,20 @@ export const Overview: Story = {
 
       {/* Token Reference */}
       <div style={{ marginBottom: '48px' }}>
-        <h2 style={{ fontSize: '24px', fontWeight: 500, color: '#181d27', marginBottom: '16px' }}>
+        <h2 style={{ fontSize: '24px', fontWeight: 500, color: 'var(--sb-text-heading)', marginBottom: '16px' }}>
           Radius
         </h2>
-        <p style={{ fontSize: '16px', color: '#6b7380', maxWidth: '720px', lineHeight: 1.5, marginBottom: '24px' }}>
+        <p style={{ fontSize: '16px', color: 'var(--sb-text-body)', maxWidth: '720px', lineHeight: 1.5, marginBottom: '24px' }}>
           Working from a pre-defined and limited radius system for adding border radiuses (or radii)
           to elements allows you to work faster and consistently. CHG uses a pre-defined and limited
           radius system derived from the primitive spacing values.
         </p>
         <div
           style={{
-            backgroundColor: '#f9fafc',
+            backgroundColor: 'var(--sb-surface-secondary)',
             borderRadius: '8px',
             overflow: 'hidden',
-            border: '1px solid #e6e7eb',
+            border: '1px solid var(--sb-border-default)',
           }}
         >
           <div
@@ -87,17 +87,17 @@ export const Overview: Story = {
               display: 'grid',
               gridTemplateColumns: '150px 100px 1fr',
               padding: '12px 24px',
-              backgroundColor: '#f3f4f6',
-              borderBottom: '1px solid #e6e7eb',
+              backgroundColor: 'var(--sb-surface-tertiary)',
+              borderBottom: '1px solid var(--sb-border-default)',
             }}
           >
-            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#6b7380' }}>
+            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: 'var(--sb-text-body)' }}>
               Token
             </span>
-            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#6b7380' }}>
+            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: 'var(--sb-text-body)' }}>
               Value
             </span>
-            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: '#6b7380' }}>
+            <span style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: 'var(--sb-text-body)' }}>
               Example
             </span>
           </div>
@@ -108,12 +108,12 @@ export const Overview: Story = {
                 display: 'grid',
                 gridTemplateColumns: '150px 100px 1fr',
                 padding: '16px 24px',
-                borderBottom: i < radiusTokens.length - 1 ? '1px solid #e6e7eb' : 'none',
+                borderBottom: i < radiusTokens.length - 1 ? '1px solid var(--sb-border-default)' : 'none',
                 alignItems: 'center',
               }}
             >
               <code style={{ fontSize: '14px', fontWeight: 500 }}>{token.name}</code>
-              <span style={{ fontSize: '14px', color: '#6b7380' }}>{token.value}</span>
+              <span style={{ fontSize: '14px', color: 'var(--sb-text-body)' }}>{token.value}</span>
               <div
                 style={{
                   width: '128px',
@@ -130,15 +130,15 @@ export const Overview: Story = {
 
       {/* Usage */}
       <div>
-        <h2 style={{ fontSize: '24px', fontWeight: 500, color: '#181d27', marginBottom: '16px' }}>
+        <h2 style={{ fontSize: '24px', fontWeight: 500, color: 'var(--sb-text-heading)', marginBottom: '16px' }}>
           Usage
         </h2>
-        <p style={{ fontSize: '14px', color: '#535862', marginBottom: '16px' }}>
+        <p style={{ fontSize: '14px', color: 'var(--sb-text-secondary)', marginBottom: '16px' }}>
           Border radius tokens are available as Tailwind classes. Note that our radius scale uses pixel values directly:
         </p>
         <pre
           style={{
-            backgroundColor: '#f9fafc',
+            backgroundColor: 'var(--sb-surface-secondary)',
             padding: '16px',
             borderRadius: '8px',
             fontSize: '13px',
