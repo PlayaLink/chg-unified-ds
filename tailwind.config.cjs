@@ -320,6 +320,12 @@ module.exports = {
       bold: '700',
     },
     extend: {
+      size: {
+        xs: '14px',
+        sm: '16px',
+        md: '18px',
+        lg: '20px',
+      },
       boxShadow: {
         xs: '0px 1px 2px 0px rgba(10, 13, 18, 0.05)',
         sm: '0px 1px 2px 0px rgba(10, 13, 18, 0.06), 0px 1px 3px 0px rgba(10, 13, 18, 0.10)',
