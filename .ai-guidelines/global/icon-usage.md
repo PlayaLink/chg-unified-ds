@@ -1,5 +1,4 @@
 ---
-alwaysApply: true
 ---
 
 # Icon Usage

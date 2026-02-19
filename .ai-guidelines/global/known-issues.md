@@ -1,0 +1,51 @@
+---
+---
+
+# Known Issues
+
+## Tailwind CSS 4 + Storybook HMR
+
+**New components require a Storybook restart.** Tailwind CSS 4's HMR doesn't always detect utility classes in newly created component files. If a new component appears unstyled (no colors, looks like wireframes), restart Storybook:
+
+```bash
+pkill -f "storybook dev"
+npm run dev
+```
+
+This only affects new files - edits to existing components work fine with HMR.
+
+## Token Issues
+
+Token issues are tracked in `tokens/TOKEN-ISSUES.md`. Current known issues:
+- Self-referencing radius aliases (workaround in place)
+- Empty brand-specific token files (brand colors available in Primitives file)
+
+Run `npm run validate:tokens` after updating tokens to check for issues.
+
+## DotStatus / Avatar Integration
+
+**Code diverges from Figma design in two areas:**
+
+1. **Missing `lg` size in Figma**: DotStatus in code has a `lg` (16px) size variant that doesn't exist in Figma. This was added to support Avatar's large size status indicator.
+
+2. **Border color override**: DotStatus uses `ring-gray-200` for its border, but Avatar's status indicator needs `ring-base-white` to match the original design. Avatar overrides this via className.
+
+These should be synced with the Figma design system when possible.
+
+## Tabs Component
+
+**Block Inverted appearance missing color styles in Figma**: The Figma design for Tabs `Block Inverted` variant appears to be missing some color style definitions. Code implementation uses reasonable defaults (dark container bg-gray-800, white selected tab, gray-300 default text) but should be verified against updated Figma specs when available.
+
+## StepIndicator Component
+
+**Progress line color behavior not explicitly defined in Figma**: The Figma design doesn't explicitly show the connector line color when transitioning between complete and active/error steps. Code implementation extends the green "complete" line color all the way to the current step (active or error) to more clearly indicate progress. This means the line leading INTO the active or error step is green, while lines after remain gray. This applies to both active steps (in progress) and error steps (failed at that point). This decision should be confirmed with the design system manager.
+
+## Tag Component
+
+**Nested padding in Figma vs single padding in code**: The Figma Tag component has padding split across two nested frames (outer container + inner label frame). In code, we consolidate this into a single padding value on the parent element. This works but can cause confusion when comparing Figma specs to code. Recommend consolidating padding to a single frame in Figma for consistency and easier design-to-code translation.
+
+**`iconRight` prop not in Figma**: The code implementation includes an `iconRight` prop that is not present in the Figma design. This was added to support common use cases like clearable/dismissible tags where an X (close) icon appears on the right side. Recommend adding an "Icon Right" appearance option in Figma to support this pattern.
+
+## Base Black Color
+
+**Figma token and Tailwind mismatch**: The base black color token from Figma does not match the expected Tailwind value. This can cause color inconsistencies between design specs and code implementation.
